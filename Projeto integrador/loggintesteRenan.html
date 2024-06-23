@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #57AEC1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #eaeff3;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            max-width: 100%;
+            text-align: center;
+            color: rgb(29, 15, 15);
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #1f6cb5;
+        }
+    </style>
+
+    <script>
+        function verify() {
+            const cpfInput = document.getElementById("cpfcpf");
+            const senhaInput = document.getElementById("senhasenha");
+            const senhaValue = senhaInput.value.trim();
+            const incCpf = document.getElementById("incCpf");
+            const incSenha = document.getElementById("incSenha");
+            const regexCpf = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+
+            if (!regexCpf.test(cpfInput.value.trim())) {
+                incCpf.textContent = "*Insira um CPF válido";
+                return false;
+            } else {
+                incCpf.textContent = "";
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Página de Login</h1>
+        <form action="#" method="post" onsubmit="return verify()">
+            <div class="form-group">
+                <label for="CPF">CPF:</label>
+                <input type="text" name="cpf" id="cpfcpf" required>
+                <div id="incCpf" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senhasenha" onkeyup="verify()">
+                <div id="incSenha" class="error-message"></div>
+            </div>
+
+            <button type="submit" value="Entrar">Entrar</button>
+    </div>
+    <a href="cadastro.html">Ainda não tem um cadastro? cadastre-se</a>
+
+    </form>
+    </div>
+</body>
+
+</html>
