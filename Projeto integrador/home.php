@@ -25,7 +25,7 @@
 
 
 <body>
-    git teste
+    
     <nav>
         <ul>
             <li><a href="contactenos.html">Contacte-nós</a></li>
