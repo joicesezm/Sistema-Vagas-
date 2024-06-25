@@ -74,6 +74,7 @@
             const cpfInput = document.getElementById("cpfcpf");
             const senhaInput = document.getElementById("senhasenha");
             const senhaValue = senhaInput.value.trim();
+            var balbalba
             const incCpf = document.getElementById("incCpf");
             const incSenha = document.getElementById("incSenha");
             const regexCpf = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
