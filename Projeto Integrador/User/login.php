@@ -1,5 +1,5 @@
 <?php 
-require_once("../Data/conexao.php");
+
 ?>
 
 <!DOCTYPE html>
