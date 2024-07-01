@@ -12,7 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $localTrabalho = $_POST["localTrabalho"];
     $requisitos = $_POST["requisitos"];
     $descricao = $_POST["descricao"];
-    $turno = $_POST["turno"];
+    $turno
+     = $_POST["turno"];
 
 
     // Prepara e executa a consulta SQL para inserir os dados na tabela

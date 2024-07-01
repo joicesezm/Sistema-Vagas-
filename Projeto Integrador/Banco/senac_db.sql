@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20/06/2024 às 16:42
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Tempo de geração: 01-Jul-2024 às 14:43
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,117 +24,87 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cadastrocandidato`
+-- Estrutura da tabela `cadastrocandidato`
 --
 
 CREATE TABLE `cadastrocandidato` (
   `cpf` int(11) NOT NULL,
-  `nome` varchar(45) DEFAULT NULL,
-  `dataNascimento` date DEFAULT NULL,
-  `endereco` varchar(45) DEFAULT NULL,
-  `bairro` varchar(45) DEFAULT NULL,
-  `cidade` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `telefone` char(14) DEFAULT NULL,
-  `senha` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELACIONAMENTOS PARA TABELAS `cadastrocandidato`:
---
+  `nome` varchar(45) NOT NULL,
+  `dataNascimento` date NOT NULL,
+  `endereco` varchar(45) NOT NULL,
+  `bairro` varchar(45) NOT NULL,
+  `cidade` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `telefone` char(14) NOT NULL,
+  `senha` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cargos`
+-- Estrutura da tabela `cargos`
 --
 
 CREATE TABLE `cargos` (
   `idCargos` int(11) NOT NULL,
-  `cargo` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELACIONAMENTOS PARA TABELAS `cargos`:
---
+  `cargo` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `experiencias`
+-- Estrutura da tabela `experiencias`
 --
 
 CREATE TABLE `experiencias` (
   `idExperiencias` int(11) NOT NULL,
-  `descricao` varchar(45) DEFAULT NULL,
-  `dataInicio` date DEFAULT NULL,
-  `dataFim` date DEFAULT NULL,
-  `idCpfCandidato` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELACIONAMENTOS PARA TABELAS `experiencias`:
---   `idCpfCandidato`
---       `cadastrocandidato` -> `cpf`
---
+  `descricao` varchar(45) NOT NULL,
+  `dataInicio` date NOT NULL,
+  `dataFim` date NOT NULL,
+  `idCpfCandidato` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `formacao`
+-- Estrutura da tabela `formacao`
 --
 
 CREATE TABLE `formacao` (
   `idFormacao` int(11) NOT NULL,
-  `curso` varchar(45) DEFAULT NULL,
-  `dataInicio` date DEFAULT NULL,
-  `instituicao` varchar(45) DEFAULT NULL,
-  `dataFim` date DEFAULT NULL,
-  `idCpfCandidato` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELACIONAMENTOS PARA TABELAS `formacao`:
---   `idCpfCandidato`
---       `cadastrocandidato` -> `cpf`
---
+  `curso` varchar(45) NOT NULL,
+  `dataInicio` date NOT NULL,
+  `instituicao` varchar(45) NOT NULL,
+  `dataFim` date NOT NULL,
+  `idCpfCandidato` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `habilidades`
+-- Estrutura da tabela `habilidades`
 --
 
 CREATE TABLE `habilidades` (
   `idHabilidades` int(11) NOT NULL,
-  `descricaoHab` varchar(45) DEFAULT NULL,
-  `idCpfCandidato` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELACIONAMENTOS PARA TABELAS `habilidades`:
---   `idCpfCandidato`
---       `cadastrocandidato` -> `cpf`
---
+  `descricaoHab` varchar(45) NOT NULL,
+  `idCpfCandidato` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `loginadmin`
+-- Estrutura da tabela `loginadmin`
 --
 
 CREATE TABLE `loginadmin` (
   `id` int(11) NOT NULL,
-  `user` char(15) DEFAULT NULL,
-  `pass` char(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `user` char(15) NOT NULL,
+  `pass` char(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELACIONAMENTOS PARA TABELAS `loginadmin`:
---
-
---
--- Despejando dados para a tabela `loginadmin`
+-- Extraindo dados da tabela `loginadmin`
 --
 
 INSERT INTO `loginadmin` (`id`, `user`, `pass`) VALUES
@@ -143,55 +113,35 @@ INSERT INTO `loginadmin` (`id`, `user`, `pass`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `logincandidato`
+-- Estrutura da tabela `logincandidato`
 --
 
 CREATE TABLE `logincandidato` (
   `cpf` int(11) NOT NULL,
-  `senha` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELACIONAMENTOS PARA TABELAS `logincandidato`:
---   `cpf`
---       `cadastrocandidato` -> `cpf`
---   `senha`
---       `cadastrocandidato` -> `senha`
---
+  `senha` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `vaga`
+-- Estrutura da tabela `vaga`
 --
 
 CREATE TABLE `vaga` (
   `idVaga` int(11) NOT NULL,
-  `nomEmpresa` varchar(45) DEFAULT NULL,
-  `requisitos` varchar(255) DEFAULT NULL,
-  `descAtividades` varchar(255) DEFAULT NULL,
-  `horarioInicio` time DEFAULT NULL,
-  `horarioFim` time DEFAULT NULL,
-  `turno` varchar(30) DEFAULT NULL,
-  `endereco` varchar(45) DEFAULT NULL,
-  `salario` float DEFAULT NULL,
-  `dataInicio` date DEFAULT NULL,
-  `dataFim` date DEFAULT NULL,
-  `idCargo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELACIONAMENTOS PARA TABELAS `vaga`:
---   `idCargo`
---       `cargos` -> `idCargos`
---
+  `nomEmpresa` varchar(45) NOT NULL,
+  `requisitos` varchar(255) NOT NULL,
+  `descAtividades` varchar(255) NOT NULL,
+  `turno` varchar(30) NOT NULL,
+  `idCargo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `cadastrocandidato`
+-- Índices para tabela `cadastrocandidato`
 --
 ALTER TABLE `cadastrocandidato`
   ADD PRIMARY KEY (`cpf`),
@@ -203,21 +153,21 @@ ALTER TABLE `cadastrocandidato`
   ADD KEY `idx_senha` (`senha`);
 
 --
--- Índices de tabela `cargos`
+-- Índices para tabela `cargos`
 --
 ALTER TABLE `cargos`
   ADD PRIMARY KEY (`idCargos`),
   ADD KEY `cargo_candidato` (`cargo`);
 
 --
--- Índices de tabela `experiencias`
+-- Índices para tabela `experiencias`
 --
 ALTER TABLE `experiencias`
   ADD PRIMARY KEY (`idExperiencias`),
   ADD KEY `idCpfCandidato` (`idCpfCandidato`);
 
 --
--- Índices de tabela `formacao`
+-- Índices para tabela `formacao`
 --
 ALTER TABLE `formacao`
   ADD PRIMARY KEY (`idFormacao`),
@@ -225,7 +175,7 @@ ALTER TABLE `formacao`
   ADD KEY `idCpfCandidato` (`idCpfCandidato`);
 
 --
--- Índices de tabela `habilidades`
+-- Índices para tabela `habilidades`
 --
 ALTER TABLE `habilidades`
   ADD PRIMARY KEY (`idHabilidades`),
@@ -233,7 +183,7 @@ ALTER TABLE `habilidades`
   ADD KEY `idCpfCandidato` (`idCpfCandidato`);
 
 --
--- Índices de tabela `loginadmin`
+-- Índices para tabela `loginadmin`
 --
 ALTER TABLE `loginadmin`
   ADD PRIMARY KEY (`id`),
@@ -241,14 +191,14 @@ ALTER TABLE `loginadmin`
   ADD UNIQUE KEY `pass` (`pass`);
 
 --
--- Índices de tabela `logincandidato`
+-- Índices para tabela `logincandidato`
 --
 ALTER TABLE `logincandidato`
   ADD PRIMARY KEY (`cpf`),
   ADD KEY `idx_senha` (`senha`);
 
 --
--- Índices de tabela `vaga`
+-- Índices para tabela `vaga`
 --
 ALTER TABLE `vaga`
   ADD PRIMARY KEY (`idVaga`),
@@ -257,7 +207,7 @@ ALTER TABLE `vaga`
   ADD KEY `idCargo` (`idCargo`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
@@ -297,36 +247,36 @@ ALTER TABLE `vaga`
   MODIFY `idVaga` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `experiencias`
+-- Limitadores para a tabela `experiencias`
 --
 ALTER TABLE `experiencias`
   ADD CONSTRAINT `experiencias_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `cadastrocandidato` (`cpf`);
 
 --
--- Restrições para tabelas `formacao`
+-- Limitadores para a tabela `formacao`
 --
 ALTER TABLE `formacao`
   ADD CONSTRAINT `formacao_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `cadastrocandidato` (`cpf`);
 
 --
--- Restrições para tabelas `habilidades`
+-- Limitadores para a tabela `habilidades`
 --
 ALTER TABLE `habilidades`
   ADD CONSTRAINT `habilidades_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `cadastrocandidato` (`cpf`);
 
 --
--- Restrições para tabelas `logincandidato`
+-- Limitadores para a tabela `logincandidato`
 --
 ALTER TABLE `logincandidato`
   ADD CONSTRAINT `logincandidato_ibfk_1` FOREIGN KEY (`cpf`) REFERENCES `cadastrocandidato` (`cpf`),
   ADD CONSTRAINT `logincandidato_ibfk_2` FOREIGN KEY (`senha`) REFERENCES `cadastrocandidato` (`senha`);
 
 --
--- Restrições para tabelas `vaga`
+-- Limitadores para a tabela `vaga`
 --
 ALTER TABLE `vaga`
   ADD CONSTRAINT `vaga_ibfk_1` FOREIGN KEY (`idCargo`) REFERENCES `cargos` (`idCargos`);
