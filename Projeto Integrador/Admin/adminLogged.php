@@ -116,13 +116,13 @@
     <div class="container">
         <header>
             <div class="logo-left">
-                <img src="./Sistema-Vagas-/Projeto Integrador/img/senacLogo.jpeg" alt="Imagem à esquerda">
+                <img src="../img/senacLogo.jpeg" alt="Imagem à esquerda">
             </div>
             <div class="titulo">
                 Projeto Sistema de Vagas - Área de Administração
             </div>
             <div class="logo-right">
-                <img src="./Sistema-Vagas-/Projeto Integrador/img/admins.png" alt="Imagem à direita">
+                <img src="../img/admins.png" alt="Imagem à direita">
             </div>
         </header>
         <div class="content">
@@ -140,7 +140,7 @@
                         <button onclick="dynamicDisplay('even', 'url')"><b>Cadastrar Formações</b></button>
                     </li>
                     <li class="box-shadow">
-                        <button onclick="dynamicDisplay('odd', '../Outros-Arquivos/cadastroVagas2.html')"><b>Cadastrar Vagas</b></button>
+                        <button onclick="dynamicDisplay('odd', './../Outros-Arquivos/cadastroVagas2.html')"><b>Cadastrar Vagas</b></button>
                     </li>
                     Área de Consultas
                     <li class="box-shadow">
