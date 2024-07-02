@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Jul-2024 às 14:43
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 7.4.29
+-- Tempo de geração: 02/07/2024 às 16:42
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,36 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cadastrocandidato`
+-- Estrutura para tabela `cadastrocandidato`
 --
 
 CREATE TABLE `cadastrocandidato` (
   `cpf` int(11) NOT NULL,
-  `nome` varchar(45) NOT NULL,
-  `dataNascimento` date NOT NULL,
-  `endereco` varchar(45) NOT NULL,
-  `bairro` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `telefone` char(14) NOT NULL,
   `senha` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cargos`
+-- Estrutura para tabela `cargos`
 --
 
 CREATE TABLE `cargos` (
   `idCargos` int(11) NOT NULL,
   `cargo` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `experiencias`
+-- Estrutura para tabela `experiencias`
 --
 
 CREATE TABLE `experiencias` (
@@ -62,12 +55,12 @@ CREATE TABLE `experiencias` (
   `dataInicio` date NOT NULL,
   `dataFim` date NOT NULL,
   `idCpfCandidato` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `formacao`
+-- Estrutura para tabela `formacao`
 --
 
 CREATE TABLE `formacao` (
@@ -77,34 +70,34 @@ CREATE TABLE `formacao` (
   `instituicao` varchar(45) NOT NULL,
   `dataFim` date NOT NULL,
   `idCpfCandidato` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `habilidades`
+-- Estrutura para tabela `habilidades`
 --
 
 CREATE TABLE `habilidades` (
   `idHabilidades` int(11) NOT NULL,
   `descricaoHab` varchar(45) NOT NULL,
   `idCpfCandidato` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `loginadmin`
+-- Estrutura para tabela `loginadmin`
 --
 
 CREATE TABLE `loginadmin` (
   `id` int(11) NOT NULL,
   `user` char(15) NOT NULL,
   `pass` char(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `loginadmin`
+-- Despejando dados para a tabela `loginadmin`
 --
 
 INSERT INTO `loginadmin` (`id`, `user`, `pass`) VALUES
@@ -113,18 +106,25 @@ INSERT INTO `loginadmin` (`id`, `user`, `pass`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `logincandidato`
+-- Estrutura para tabela `perfilusuario`
 --
 
-CREATE TABLE `logincandidato` (
+CREATE TABLE `perfilusuario` (
   `cpf` int(11) NOT NULL,
+  `nome` varchar(45) DEFAULT NULL,
+  `dataNascimento` date DEFAULT NULL,
+  `endereco` varchar(45) DEFAULT NULL,
+  `bairro` varchar(45) NOT NULL,
+  `cidade` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `telefone` char(14) NOT NULL,
   `senha` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vaga`
+-- Estrutura para tabela `vaga`
 --
 
 CREATE TABLE `vaga` (
@@ -134,16 +134,61 @@ CREATE TABLE `vaga` (
   `descAtividades` varchar(255) NOT NULL,
   `turno` varchar(30) NOT NULL,
   `idCargo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `cadastrocandidato`
+-- Índices de tabela `cadastrocandidato`
 --
 ALTER TABLE `cadastrocandidato`
+  ADD PRIMARY KEY (`cpf`),
+  ADD KEY `idx_senha` (`senha`);
+
+--
+-- Índices de tabela `cargos`
+--
+ALTER TABLE `cargos`
+  ADD PRIMARY KEY (`idCargos`),
+  ADD KEY `cargo_candidato` (`cargo`);
+
+--
+-- Índices de tabela `experiencias`
+--
+ALTER TABLE `experiencias`
+  ADD PRIMARY KEY (`idExperiencias`),
+  ADD KEY `idCpfCandidato` (`idCpfCandidato`);
+
+--
+-- Índices de tabela `formacao`
+--
+ALTER TABLE `formacao`
+  ADD PRIMARY KEY (`idFormacao`),
+  ADD KEY `formacao_acad` (`curso`),
+  ADD KEY `idCpfCandidato` (`idCpfCandidato`);
+
+--
+-- Índices de tabela `habilidades`
+--
+ALTER TABLE `habilidades`
+  ADD PRIMARY KEY (`idHabilidades`),
+  ADD KEY `hab_candidato` (`descricaoHab`),
+  ADD KEY `idCpfCandidato` (`idCpfCandidato`);
+
+--
+-- Índices de tabela `loginadmin`
+--
+ALTER TABLE `loginadmin`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user` (`user`),
+  ADD UNIQUE KEY `pass` (`pass`);
+
+--
+-- Índices de tabela `perfilusuario`
+--
+ALTER TABLE `perfilusuario`
   ADD PRIMARY KEY (`cpf`),
   ADD UNIQUE KEY `cpf` (`cpf`),
   ADD UNIQUE KEY `email` (`email`),
@@ -153,52 +198,7 @@ ALTER TABLE `cadastrocandidato`
   ADD KEY `idx_senha` (`senha`);
 
 --
--- Índices para tabela `cargos`
---
-ALTER TABLE `cargos`
-  ADD PRIMARY KEY (`idCargos`),
-  ADD KEY `cargo_candidato` (`cargo`);
-
---
--- Índices para tabela `experiencias`
---
-ALTER TABLE `experiencias`
-  ADD PRIMARY KEY (`idExperiencias`),
-  ADD KEY `idCpfCandidato` (`idCpfCandidato`);
-
---
--- Índices para tabela `formacao`
---
-ALTER TABLE `formacao`
-  ADD PRIMARY KEY (`idFormacao`),
-  ADD KEY `formacao_acad` (`curso`),
-  ADD KEY `idCpfCandidato` (`idCpfCandidato`);
-
---
--- Índices para tabela `habilidades`
---
-ALTER TABLE `habilidades`
-  ADD PRIMARY KEY (`idHabilidades`),
-  ADD KEY `hab_candidato` (`descricaoHab`),
-  ADD KEY `idCpfCandidato` (`idCpfCandidato`);
-
---
--- Índices para tabela `loginadmin`
---
-ALTER TABLE `loginadmin`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user` (`user`),
-  ADD UNIQUE KEY `pass` (`pass`);
-
---
--- Índices para tabela `logincandidato`
---
-ALTER TABLE `logincandidato`
-  ADD PRIMARY KEY (`cpf`),
-  ADD KEY `idx_senha` (`senha`);
-
---
--- Índices para tabela `vaga`
+-- Índices de tabela `vaga`
 --
 ALTER TABLE `vaga`
   ADD PRIMARY KEY (`idVaga`),
@@ -207,7 +207,7 @@ ALTER TABLE `vaga`
   ADD KEY `idCargo` (`idCargo`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -247,36 +247,29 @@ ALTER TABLE `vaga`
   MODIFY `idVaga` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `experiencias`
+-- Restrições para tabelas `experiencias`
 --
 ALTER TABLE `experiencias`
-  ADD CONSTRAINT `experiencias_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `cadastrocandidato` (`cpf`);
+  ADD CONSTRAINT `experiencias_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `perfilusuario` (`cpf`);
 
 --
--- Limitadores para a tabela `formacao`
+-- Restrições para tabelas `formacao`
 --
 ALTER TABLE `formacao`
-  ADD CONSTRAINT `formacao_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `cadastrocandidato` (`cpf`);
+  ADD CONSTRAINT `formacao_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `perfilusuario` (`cpf`);
 
 --
--- Limitadores para a tabela `habilidades`
+-- Restrições para tabelas `habilidades`
 --
 ALTER TABLE `habilidades`
-  ADD CONSTRAINT `habilidades_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `cadastrocandidato` (`cpf`);
+  ADD CONSTRAINT `habilidades_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `perfilusuario` (`cpf`);
 
 --
--- Limitadores para a tabela `logincandidato`
---
-ALTER TABLE `logincandidato`
-  ADD CONSTRAINT `logincandidato_ibfk_1` FOREIGN KEY (`cpf`) REFERENCES `cadastrocandidato` (`cpf`),
-  ADD CONSTRAINT `logincandidato_ibfk_2` FOREIGN KEY (`senha`) REFERENCES `cadastrocandidato` (`senha`);
-
---
--- Limitadores para a tabela `vaga`
+-- Restrições para tabelas `vaga`
 --
 ALTER TABLE `vaga`
   ADD CONSTRAINT `vaga_ibfk_1` FOREIGN KEY (`idCargo`) REFERENCES `cargos` (`idCargos`);
