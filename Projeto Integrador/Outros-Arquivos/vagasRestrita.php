@@ -1,61 +1,159 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
-    <link rel="stylesheet" href="../Data/CascadingInt.css">
+    <title>Exibir Conteúdo HTML Dinamicamente</title>
+    <style>
+        /* Estilos gerais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            text-align: center;
+            background-color: #c5c5c5;
+            color: #000000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-left img {
+            width: 200px; /* Ajuste o tamanho conforme necessário */
+            height: auto;
+        }
+
+        .logo-right img {
+            width: 50px; /* Ajuste o tamanho conforme necessário */
+            height: auto;
+        }
+
+        .titulo {
+            font-size: x-large;
+            text-align: center; /* Adicionado para centralizar o texto */
+            flex: 1; /* Para ocupar o espaço disponível */
+        }
+
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li:hover {
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Sombra preta suave no hover */
+            border-color: #5e5364; /* Cor da borda no hover */
+            transform: scale(1.02); /* Zoom de 5% no hover */
+        }
+
+        nav ul li {
+            margin-bottom: 10px;
+            display: flex; /* Torna o <li> um flex container */
+            align-items: center; /* Alinha itens verticalmente */
+            padding: 10px; /* Espaçamento interno */
+            transition: box-shadow 0.1s ease, transform 0.1s ease; /* Transições suaves */
+        }
+
+        nav ul li button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px; /* Ajuste o padding conforme necessário */
+            width: 100%; /* Ocupa toda a largura do <li> */
+            display: block; /* Para ocupar todo o espaço do <li> */
+            text-align: left; /* Alinha o texto do botão à esquerda */
+            transition: color 0.3s ease;
+        }
+
+        nav ul li button:hover {
+            color: none;
+        }
+
+        .main {
+            flex: 3;
+            background-color: #f9f9f9;
+            padding: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .box-shadow {
+            box-shadow: 1px 1px 2px rgba(48, 47, 46, 0.5);
+            border: solid 1px black;
+        }
+    </style>
 </head>
-
-
-<header>
-    <img src="..\img\senacLogo.jpeg" alt="Logo do senac"
-        style="width: 250px; height: auto; position: absolute; top: 0; left: 0;">
-    
-    <h1 class="gwendolyn-regular gwendolyn-bold">Informativo de vagas de trabalho</h1>
-</header>
-
-
 <body>
-
- 
-<div class="sidebar">  
-    
-    <a href="..\cadastroMeuPerfil.php">Informações Pessoais</a>
-    <a href="experiencias.php">Experiências</a>
-    <a href="#clients">Habilidades</a>
-    <a href=".\formacao.php">Formações</a>
-</div>
-
-
-</body>
-<!-- Footer -->
-<footer>
-    <div class="footer-icons">
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/seuperfil" target="_blank">
-            <img src="..\img\instagram.png" alt="Instagram" style="height: 40px;">
-        </a>
-        <!-- Twitter -->
-        <a href="https://twitter.com/seuperfil" target="_blank">
-            <img src="..\img\x.png.png" alt="Twitter" style="height: 40px;">
-        </a>
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/seuperfil" target="_blank">
-            <img src="..\img\face.png.png" alt="Facebook" style="height: 40px;">
-        </a>
-        <!-- WhatsApp -->
-        <a href="https://api.whatsapp.com/send?phone=seunumerodetelefone" target="_blank">
-            <img src="..\img\whatsapp.png" alt="WhatsApp" style="height: 40px;">
-        </a>
+    <script src="..\Data\Validate.js"></script>
+    <div class="container">
+        <header>
+            <div class="logo-left">
+                <img src="../img/senacLogo.jpeg" alt="Imagem à esquerda">
+            </div>
+            <div class="titulo">
+                Projeto Sistema de Vagas - Área de Usuários
+            </div>
+            <div class="logo-right">
+                <img src="../img/right-logo.jpeg" alt="Imagem à direita">
+            </div>
+        </header>
+        <div class="content">
+            <nav>
+                <ul>
+                    <li class="box-shadow">
+                        <button onclick="dynamicDisplay('even', 'url')"><b>Informações Pessoais</b></button>
+                    </li>
+                    <li class="box-shadow">
+                        <button onclick="dynamicDisplay('even', 'url')"><b>Expêriencias</b></button>
+                    </li>
+                    <li class="box-shadow">
+                        <button onclick="dynamicDisplay('even', './b.php')"><b>Habilidades</b></button>
+                    </li>
+                    <li class="box-shadow">
+                        <button onclick="dynamicDisplay('odd', './a.php')"><b>Formações</b></button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="main">
+                <div id="even" class="hidden"></div>
+                <div id="odd" class="hidden"></div>
+            </div>
+        </div>
     </div>
 
-</footer>
-
+</body>
 </html>
