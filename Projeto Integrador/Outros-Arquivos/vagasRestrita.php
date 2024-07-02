@@ -19,11 +19,7 @@
 
 
 <header>
-<<<<<<< HEAD:Projeto Integrador/Outros-Arquivos/vagasRestrita.html
-    <img src="../img/senacLogo.jpeg" alt="Logo do senac"
-=======
     <img src="..\img\senacLogo.jpeg" alt="Logo do senac"
->>>>>>> 82afd9389114476fa7c3bd1a918e55500d3b6195:Projeto Integrador/Outros-Arquivos/vagasRestrita.php
         style="width: 250px; height: auto; position: absolute; top: 0; left: 0;">
     
     <h1 class="gwendolyn-regular gwendolyn-bold">Informativo de vagas de trabalho</h1>

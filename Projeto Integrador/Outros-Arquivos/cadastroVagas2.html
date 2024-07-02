@@ -15,7 +15,7 @@
             <img src="" alt="img">
         </div>
         <div class="form">
-            <form action="#">
+            <form action="..\Admin\cadastroVagas.php" method="POST" name="cadastroVagas">
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastrar vagas</h1>
@@ -63,29 +63,29 @@
 
                     <div class="turno-group">
                         <div class="turno-input">
-                            <input id="turno1" type="radio" name="turno">
+                            <input id="turno1" type="radio" name="turno" value="1° turno">
                             <label for="turno1">1° turno</label>
                         </div>
 
                         <div class="turno-input">
-                            <input id="turno2" type="radio" name="turno">
+                            <input id="turno2" type="radio" name="turno" value="2° turno">
                             <label for="turno2">2° turno</label>
                         </div>
 
                         <div class="turno-input">
-                            <input id="turno3" type="radio" name="turno">
+                            <input id="turno3" type="radio" name="turno" value="3° turno">
                             <label for="turno3">3° turno</label>
                         </div>
 
                         <div class="turno-input">
-                            <input id="turno4" type="radio" name="turno">
+                            <input id="turno4" type="radio" name="turno" value="Comercial">
                             <label for="turno4">Comercial</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="continue-button">
-                    <button><a href="#">Continuar</a> </button>
+                    <input type="submit" name="cadastrar" value="Cadastrar" /> 
                 </div>
             </form>
         </div>
