@@ -1,28 +1,49 @@
+/* Estilos gerais */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* Estilos do header */
 header {
-  position: relative;
   background-color: #333;
   color: #fff;
   padding: 10px 20px;
   text-align: center;
 }
 
+header img {
+  height: auto;
+}
+
+header h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  margin: 0;
+}
+
+.admin-page {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+/* Estilos do menu de navegação */
 nav {
   background-color: #f4f4f4;
-  width: 200px;
-  height: 100vh;
-  float: left;
+  width: 100%;
 }
 
 nav ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul li {
@@ -34,11 +55,21 @@ nav ul li:hover {
   background-color: #ddd;
 }
 
+/* Estilos do conteúdo principal */
 .content {
-  margin-left: 220px;
-  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px;
 }
 
+.content img {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Estilos do grupo de botões */
 .btn-group {
   text-align: center;
   margin-bottom: 20px;
@@ -64,205 +95,35 @@ nav ul li:hover {
   background-color: #555;
 }
 
-.message {
-  background-color: #f4f4f4;
-  padding: 20px;
-  border-radius: 5px;
-  margin: 20px auto;
-  /* Centraliza a mensagem */
-  max-width: 600px;
-}
-
-.gwendolyn-regular {
-  font-family: "Gwendolyn", cursive;
-  font-weight: 400;
-  font-style: normal
-  ;
-}
-
-.gwendolyn-bold {
-  font-family: "Gwendolyn", cursive;
-  font-weight: 700;
-  font-style: normal;
-  
-}
-
-#contact-box {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para o formulário de cadastro */
-.cadastro-form {
-  background-color: #f8f8f8;
-  /* Cor de fundo */
-  border-radius: 10px;
-  /* Cantos arredondados */
-  padding: 20px;
-  /* Espaçamento interno */
-  margin-top: 20px;
-  /* Espaçamento superior */
-}
-
-
-.cadastro-form label {
-  display: block;
-  margin-top: 10px;
-  color: #555;
-  /* Cor do texto do rótulo */
-}
-
-.cadastro-form input[type="text"],
-.cadastro-form input[type="email"],
-.cadastro-form input[type="password"] {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  /* Cor da borda */
-  border-radius: 5px;
-  /* Cantos arredondados */
-}
-
-.cadastro-form input[type="submit"] {
-  background-color: #007bff;
-  /* Cor de fundo do botão */
-  color: #fff;
-  /* Cor do texto do botão */
-  border: none;
-  padding: 10px 20px;
-  margin-top: 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.cadastro-form input[type="submit"]:hover {
-  background-color: #0056b3;
-  /* Cor de fundo do botão ao passar o mouse */
-}
-
-.cadastro-form p {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #555;
-  /* Cor do texto do parágrafo */
-}
-
-.cadastro-form a {
-  color: #007bff;
-  /* Cor do link */
-  text-decoration: none;
-}
-
-.cadastro-form a:hover {
-  text-decoration: underline;
-  /* Sublinhar o link ao passar o mouse */
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  text-align: center;
-}
-
-nav {
-  float: left; 
-  background-color: #f4f4f4;
-  width: 200px;
-  height: 100vh;
-  float: left;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  padding: 10px 20px;
-  border-bottom: 1px solid #ccc;
-}
-
-nav ul li:hover {
-  background-color: #ddd;
-}
-
-/*imagens body home*/
-.content {
-  margin-left: 220px;
-  padding: 20px;
-}
-
-
-/*footer*/
-/* Estilos para o footer */
+/* Estilos do rodapé */
 footer {
   background-color: #333;
-  /* Cor de fundo do footer */
   color: #fff;
-  /* Cor do texto */
-  padding: 20px 0;
-  /* Espaçamento interno */
   text-align: center;
-  /* Alinhamento do texto */
+  padding: 20px 0;
   position: fixed;
-  /* Posição fixa na parte inferior */
   width: 100%;
-  /* Largura total */
   bottom: 0;
-  /* Alinhamento na parte inferior */
+  z-index: 1000;
+}
 
-  z-index: 1000; /* Alto valor para garantir que fique no c*
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-icons a {
   color: #fff;
-  /* Cor dos ícones */
   text-decoration: none;
-  /* Remover sublinhado */
-  margin: 0 0px;
-  /* Espaçamento entre os ícones */
+  margin: 0 10px;
 }
 
-
-/*nav*/
-.sidebar {
-  width: 200px;
-  height: 100vh;
-  position: relative;
-  z-index: 1;
-  top: 0; /* Ajuste o valor conforme a altura do seu header */
-  left:0;
-  background-color: #111;
-  overflow-x: hidden;
-
-
-  
-}
-.sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-.sidebar a:hover {
-  color: #f1f1f1;
+.footer-icons img {
+  height: 40px;
 }
 
-
-.admin-page{
-  position: fixed; top: 0; right: 0;
+/* Estilos específicos para o formulário de cadastro, se necessário */
+.cadastro-form {
+  /* Estilos específicos para o formulário de cadastro */
 }

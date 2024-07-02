@@ -10,11 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
-<<<<<<< HEAD:Projeto Integrador/Outros-Arquivos/vagasRestrita.html
     <link rel="stylesheet" href="../Data/CascadingInt.css">
-=======
-    <link rel="stylesheet" href="..\Data\CascadingInt.css">
->>>>>>> 82afd9389114476fa7c3bd1a918e55500d3b6195:Projeto Integrador/Outros-Arquivos/vagasRestrita.php
 </head>
 
 
