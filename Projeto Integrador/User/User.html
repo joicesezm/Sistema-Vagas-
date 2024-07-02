@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Perfil</title>
+    <style>
+        /* styles.css */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header,
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+            flex-wrap: wrap;
+            padding: 1em;
+        }
+
+        .flex-1 {
+            flex: 1;
+            padding: 1em;
+            background-color: #f4f4f4;
+        }
+
+        .flex-3 {
+            flex: 3;
+            padding: 1em;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 1em;
+            margin-bottom: 1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+
+            .flex-1,
+            .flex-3 {
+                flex: 100%;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Perfil do Usuário</h1>
+        </header>
+        <nav class="header">NAVEGAÇÂO PARA O USUARIO</nav>
+        <div class="content">
+            <div class="flex-1">
+                <button onclick="dynamicDisplay('even', 'url')"><b>Perfil do Usuário</b></button>
+                <button onclick="dynamicDisplay('odd', 'url')"><b>Formações</b></button>
+                <button onclick="dynamicDisplay('even', 'url')"><b>Consultar Vagas</b></button>
+            </div>
+            <div class="flex-3" id="content">
+                <div id="even" class="hidden"></div>
+                <div id="odd" class="hidden"></div>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>Rodapé do Perfil do Usuário</p>
+        </footer>
+    </div>
+</body>
+
+</html>
