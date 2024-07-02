@@ -140,7 +140,7 @@
                         <button onclick="dynamicDisplay('even', 'url')"><b>Cadastrar Formações</b></button>
                     </li>
                     <li class="box-shadow">
-                        <button onclick="dynamicDisplay('odd', 'url')"><b>Cadastrar Vagas</b></button>
+                        <button onclick="dynamicDisplay('odd', '../Outros-Arquivos/cadastroVagas2.html')"><b>Cadastrar Vagas</b></button>
                     </li>
                     Área de Consultas
                     <li class="box-shadow">
