@@ -48,21 +48,6 @@
     <div class="footer-icons">
         <!-- Instagram -->
         <a href="https://www.instagram.com/seuperfil" target="_blank">
-<<<<<<< HEAD:Projeto Integrador/Outros-Arquivos/vagasRestrita.html
-            <img src="../img/instagram.png" alt="Instagram" style="height: 40px;">
-        </a>
-        <!-- Twitter -->
-        <a href="https://twitter.com/seuperfil" target="_blank">
-            <img src="../img/x.png.png" alt="Twitter" style="height: 40px;">
-        </a>
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/seuperfil" target="_blank">
-            <img src="../img/face.png.png" alt="Facebook" style="height: 40px;">
-        </a>
-        <!-- WhatsApp -->
-        <a href="https://api.whatsapp.com/send?phone=seunumerodetelefone" target="_blank">
-            <img src="../img/whatsapp.png" alt="WhatsApp" style="height: 40px;">
-=======
             <img src="..\img\instagram.png" alt="Instagram" style="height: 40px;">
         </a>
         <!-- Twitter -->
@@ -76,7 +61,6 @@
         <!-- WhatsApp -->
         <a href="https://api.whatsapp.com/send?phone=seunumerodetelefone" target="_blank">
             <img src="..\img\whatsapp.png" alt="WhatsApp" style="height: 40px;">
->>>>>>> 82afd9389114476fa7c3bd1a918e55500d3b6195:Projeto Integrador/Outros-Arquivos/vagasRestrita.php
         </a>
     </div>
 
