@@ -21,3 +21,19 @@ function verifyAdmin() {
     let x = document.forms["myForm"]["pass"].value;
 }
 
+function dynamicDisplay(divId, arquivo) {
+    // Esconde todas as divs
+    document.getElementById('even').classList.add('hidden');
+    document.getElementById('odd').classList.add('hidden');
+
+    // Carrega o conteúdo do arquivo usando fetch
+    fetch(arquivo)
+        .then(response => response.text())
+        .then(data => {
+            // Insere o conteúdo carregado na div correspondente
+            var divToShow = document.getElementById(divId);
+            divToShow.innerHTML = data;
+            divToShow.classList.remove('hidden');
+        })
+        .catch(error => console.error('Erro ao carregar o arquivo:', error));
+}
