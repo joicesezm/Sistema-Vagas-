@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02/07/2024 às 16:42
+-- Tempo de geração: 04/07/2024 às 14:10
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -30,17 +30,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `cadastrocandidato` (
   `cpf` int(11) NOT NULL,
   `senha` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `cargos`
---
-
-CREATE TABLE `cargos` (
-  `idCargos` int(11) NOT NULL,
-  `cargo` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -133,7 +122,8 @@ CREATE TABLE `vaga` (
   `requisitos` varchar(255) NOT NULL,
   `descAtividades` varchar(255) NOT NULL,
   `turno` varchar(30) NOT NULL,
-  `idCargo` int(11) NOT NULL
+  `cargo` varchar(255) DEFAULT NULL,
+  `endereco` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -146,13 +136,6 @@ CREATE TABLE `vaga` (
 ALTER TABLE `cadastrocandidato`
   ADD PRIMARY KEY (`cpf`),
   ADD KEY `idx_senha` (`senha`);
-
---
--- Índices de tabela `cargos`
---
-ALTER TABLE `cargos`
-  ADD PRIMARY KEY (`idCargos`),
-  ADD KEY `cargo_candidato` (`cargo`);
 
 --
 -- Índices de tabela `experiencias`
@@ -203,18 +186,11 @@ ALTER TABLE `perfilusuario`
 ALTER TABLE `vaga`
   ADD PRIMARY KEY (`idVaga`),
   ADD UNIQUE KEY `nomEmpresa` (`nomEmpresa`),
-  ADD KEY `turno_trab` (`turno`),
-  ADD KEY `idCargo` (`idCargo`);
+  ADD KEY `turno_trab` (`turno`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
 --
-
---
--- AUTO_INCREMENT de tabela `cargos`
---
-ALTER TABLE `cargos`
-  MODIFY `idCargos` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `experiencias`
@@ -267,12 +243,6 @@ ALTER TABLE `formacao`
 --
 ALTER TABLE `habilidades`
   ADD CONSTRAINT `habilidades_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `perfilusuario` (`cpf`);
-
---
--- Restrições para tabelas `vaga`
---
-ALTER TABLE `vaga`
-  ADD CONSTRAINT `vaga_ibfk_1` FOREIGN KEY (`idCargo`) REFERENCES `cargos` (`idCargos`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
