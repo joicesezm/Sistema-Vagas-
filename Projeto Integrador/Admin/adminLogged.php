@@ -144,10 +144,10 @@
                     </li>
                     Área de Consultas
                     <li class="box-shadow">
-                        <button onclick="dynamicDisplay('even', './b.php')"><b>Consultar Vagas</b></button>
+                        <button onclick="dynamicDisplay('even', './../Outros-Arquivos/consultarVagas.php')"><b>Consultar Vagas</b></button>
                     </li>
                     <li class="box-shadow">
-                        <button onclick="dynamicDisplay('odd', './a.php')"><b>Consultar Usuários</b></button>
+                        <button onclick="dynamicDisplay('odd', './../Outros-Arquivos/consultarUsuários.php')"><b>Consultar Usuários</b></button>
                     </li>
                 </ul>
             </nav>
