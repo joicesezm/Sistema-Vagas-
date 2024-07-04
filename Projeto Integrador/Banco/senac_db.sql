@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04/07/2024 às 14:10
+-- Tempo de geração: 04/07/2024 às 14:19
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -123,8 +123,16 @@ CREATE TABLE `vaga` (
   `descAtividades` varchar(255) NOT NULL,
   `turno` varchar(30) NOT NULL,
   `cargo` varchar(255) DEFAULT NULL,
-  `endereco` varchar(255) DEFAULT NULL
+  `endereco` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `vaga`
+--
+
+INSERT INTO `vaga` (`idVaga`, `nomEmpresa`, `requisitos`, `descAtividades`, `turno`, `cargo`, `endereco`, `email`) VALUES
+(1, 'senac', 'formação superior', 'experiencia comprovada', 'Comercial', 'professor', 'medianeira', 'w@a.com');
 
 --
 -- Índices para tabelas despejadas
@@ -220,7 +228,7 @@ ALTER TABLE `loginadmin`
 -- AUTO_INCREMENT de tabela `vaga`
 --
 ALTER TABLE `vaga`
-  MODIFY `idVaga` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idVaga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para tabelas despejadas
