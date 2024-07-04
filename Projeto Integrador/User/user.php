@@ -80,12 +80,12 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>Perfil do Usuário</h1>
+            <h1>Informativo de Vagas</h1>
         </header>
-        <nav class="header">NAVEGAÇÂO PARA O USUARIO</nav>
+        <nav class="header">Procure pela melhor vaga para você aqui!</nav>
         <div class="content">
             <div class="flex-1">
-                <button onclick="dynamicDisplay('even', 'url')"><b>Perfil do Usuário</b></button>
+                <button onclick="dynamicDisplay('even', 'cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
                 <button onclick="dynamicDisplay('odd', 'url')"><b>Formações</b></button>
                 <button onclick="dynamicDisplay('even', 'url')"><b>Consultar Vagas</b></button>
             </div>
@@ -94,9 +94,26 @@
                 <div id="odd" class="hidden"></div>
             </div>
         </div>
-        <footer class="footer">
-            <p>Rodapé do Perfil do Usuário</p>
-        </footer>
+        <footer>
+        <div class="footer">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/seuperfil" target="_blank">
+                <img src="../img/instagram.png" alt="Instagram" style="height: 40px;">
+            </a>
+            <!-- Twitter -->
+            <a href="https://twitter.com/seuperfil" target="_blank">
+                <img src="../img/x.png.png" alt="Twitter" style="height: 40px;">
+            </a>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/seuperfil" target="_blank">
+                <img src="../img/face.png.png" alt="Facebook" style="height: 40px;">
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://api.whatsapp.com/send?phone=seunumerodetelefone" target="_blank">
+                <img src="../img/whatsapp.png" alt="WhatsApp" style="height: 40px;">
+            </a>
+        </div>
+    </footer>
     </div>
 </body>
 

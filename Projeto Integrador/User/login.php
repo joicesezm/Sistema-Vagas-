@@ -10,7 +10,7 @@ if(isset($_POST["cpf"]) && isset($_POST["senha"])){
         require_once("../Data/conexao.php");
 
         // Evitar SQL Injection utilizando prepared statements
-        $sql = "SELECT * FROM cadastrocandidato WHERE cpf = ? AND senha = ?";
+        $sql = "SELECT * FROM perfilusuario WHERE cpf = ? AND senha = ?";
         $stmt = mysqli_prepare($conexao, $sql);
         mysqli_stmt_bind_param($stmt, "ss", $login_user, $senha_user);
         mysqli_stmt_execute($stmt);
