@@ -75,6 +75,7 @@
             display: none;
         }
     </style>
+     <script src="../Data/Validate.js"></script>
 </head>
 
 <body>
@@ -85,9 +86,9 @@
         <nav class="header">Procure pela melhor vaga para você aqui!</nav>
         <div class="content">
             <div class="flex-1">
-                <button onclick="dynamicDisplay('even', 'cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
-                <button onclick="dynamicDisplay('odd', 'url')"><b>Formações</b></button>
-                <button onclick="dynamicDisplay('even', 'url')"><b>Consultar Vagas</b></button>
+              <button onclick="dynamicDisplay('even', '../Outros-Arquivos/cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
+              <button onclick="dynamicDisplay('odd', 'url')"><b>Formações</b></button>
+              <button onclick="dynamicDisplay('even', 'url')"><b>Consultar Vagas</b></button>
             </div>
             <div class="flex-3" id="content">
                 <div id="even" class="hidden"></div>
