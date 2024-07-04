@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $descricao = $_POST["descricao"];
     $turno = filter_input(INPUT_POST, "turno");
 
-
+      //estou aqui
     // Prepara e executa a consulta SQL para inserir os dados na tabela
     $sql = "INSERT INTO vaga (nomEmpresa, cargo, email, endereco , requisitos, descAtividades, turno)
             VALUES ('$nomeEmpresa', '$cargo', '$email', '$localTrabalho', '$requisitos', '$descricao', '$turno')";
