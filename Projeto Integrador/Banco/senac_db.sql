@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04/07/2024 às 14:19
+-- Tempo de geração: 04/07/2024 às 15:31
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -24,22 +24,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cadastrocandidato`
---
-
-CREATE TABLE `cadastrocandidato` (
-  `cpf` int(11) NOT NULL,
-  `senha` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `experiencias`
 --
 
 CREATE TABLE `experiencias` (
-  `idExperiencias` int(11) NOT NULL,
+  `idExperiencias` bigint(11) NOT NULL,
   `descricao` varchar(45) NOT NULL,
   `dataInicio` date NOT NULL,
   `dataFim` date NOT NULL,
@@ -53,7 +42,7 @@ CREATE TABLE `experiencias` (
 --
 
 CREATE TABLE `formacao` (
-  `idFormacao` int(11) NOT NULL,
+  `idFormacao` bigint(11) NOT NULL,
   `curso` varchar(45) NOT NULL,
   `dataInicio` date NOT NULL,
   `instituicao` varchar(45) NOT NULL,
@@ -68,7 +57,7 @@ CREATE TABLE `formacao` (
 --
 
 CREATE TABLE `habilidades` (
-  `idHabilidades` int(11) NOT NULL,
+  `idHabilidades` bigint(11) NOT NULL,
   `descricaoHab` varchar(45) NOT NULL,
   `idCpfCandidato` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -80,7 +69,7 @@ CREATE TABLE `habilidades` (
 --
 
 CREATE TABLE `loginadmin` (
-  `id` int(11) NOT NULL,
+  `id` bigint(11) NOT NULL,
   `user` char(15) NOT NULL,
   `pass` char(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -99,7 +88,7 @@ INSERT INTO `loginadmin` (`id`, `user`, `pass`) VALUES
 --
 
 CREATE TABLE `perfilusuario` (
-  `cpf` int(11) NOT NULL,
+  `cpf` bigint(11) NOT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `dataNascimento` date DEFAULT NULL,
   `endereco` varchar(45) DEFAULT NULL,
@@ -117,7 +106,7 @@ CREATE TABLE `perfilusuario` (
 --
 
 CREATE TABLE `vaga` (
-  `idVaga` int(11) NOT NULL,
+  `idVaga` bigint(11) NOT NULL,
   `nomEmpresa` varchar(45) NOT NULL,
   `requisitos` varchar(255) NOT NULL,
   `descAtividades` varchar(255) NOT NULL,
@@ -128,22 +117,8 @@ CREATE TABLE `vaga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `vaga`
---
-
-INSERT INTO `vaga` (`idVaga`, `nomEmpresa`, `requisitos`, `descAtividades`, `turno`, `cargo`, `endereco`, `email`) VALUES
-(1, 'senac', 'formação superior', 'experiencia comprovada', 'Comercial', 'professor', 'medianeira', 'w@a.com');
-
---
 -- Índices para tabelas despejadas
 --
-
---
--- Índices de tabela `cadastrocandidato`
---
-ALTER TABLE `cadastrocandidato`
-  ADD PRIMARY KEY (`cpf`),
-  ADD KEY `idx_senha` (`senha`);
 
 --
 -- Índices de tabela `experiencias`
@@ -204,53 +179,31 @@ ALTER TABLE `vaga`
 -- AUTO_INCREMENT de tabela `experiencias`
 --
 ALTER TABLE `experiencias`
-  MODIFY `idExperiencias` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idExperiencias` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `formacao`
 --
 ALTER TABLE `formacao`
-  MODIFY `idFormacao` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idFormacao` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `habilidades`
 --
 ALTER TABLE `habilidades`
-  MODIFY `idHabilidades` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idHabilidades` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `loginadmin`
 --
 ALTER TABLE `loginadmin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `vaga`
 --
 ALTER TABLE `vaga`
-  MODIFY `idVaga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Restrições para tabelas despejadas
---
-
---
--- Restrições para tabelas `experiencias`
---
-ALTER TABLE `experiencias`
-  ADD CONSTRAINT `experiencias_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `perfilusuario` (`cpf`);
-
---
--- Restrições para tabelas `formacao`
---
-ALTER TABLE `formacao`
-  ADD CONSTRAINT `formacao_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `perfilusuario` (`cpf`);
-
---
--- Restrições para tabelas `habilidades`
---
-ALTER TABLE `habilidades`
-  ADD CONSTRAINT `habilidades_ibfk_1` FOREIGN KEY (`idCpfCandidato`) REFERENCES `perfilusuario` (`cpf`);
+  MODIFY `idVaga` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

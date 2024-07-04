@@ -1,5 +1,36 @@
 <?php 
+// Inicia a sessão da página
+session_start();
+require_once("../Data/conexao.php");
 
+// Verifica se o formulário foi enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']) && $_POST['submit'] == 'submit') {
+    // Filtra e valida os dados do formulário
+    $cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_STRING);
+    $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
+
+    // Validações adicionais, se necessário (ex: validar o formato do CPF)
+
+    // Prepara a query SQL usando prepared statement
+    $stmt = $conexao->prepare("INSERT INTO cadastrocandidato (cpf, senha) VALUES (?, ?)");
+    $stmt->bind_param("is", $cpf, $senha);
+
+    // Executa a query
+    if ($stmt->execute()) {
+        $_SESSION['msg'] = "<p style='color:green;'>Usuário cadastrado com sucesso</p>";
+        // Redireciona para o arquivo index
+        echo "<script>alert('Cadastrado com Sucesso!'); window.location='./login.php';</script>";
+        exit(); // Termina o script após redirecionar
+    } else {
+        $_SESSION['msg'] = "<p style='color:red;'>Usuário não foi cadastrado com sucesso</p>";
+        // Redireciona para o arquivo cadastro.php
+        echo "<script>alert('Usuario não cadastrado!'); window.location='./cadastro.php';</script>";
+        exit(); // Termina o script após redirecionar
+    }
+    
+}
+
+session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -13,11 +44,11 @@
 <body>
     <div class="container">
         <h2>Cadastro</h2>
-        <form name="cadastro-form" method="post" onsubmit="return ">
+        <form name="cadastro-form" method="post" onsubmit="" action="">
     
             <div class="form-group">
-                <label for="CPF">CPF</label>
-                <input type="text" id="CPF" name="CPF" required>
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" required>
             </div>
             <div class="form-group">
                 <label for="senha">Senha:</label>

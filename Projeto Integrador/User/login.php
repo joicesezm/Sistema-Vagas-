@@ -1,5 +1,37 @@
 <?php 
+session_start();
 
+if(isset($_POST["cpf"]) && isset($_POST["senha"])){
+    $login_user = $_POST["cpf"];
+    $senha_user = $_POST["senha"];
+    
+     //!(nega)Verifica se os campos estão vazios
+    if(!(empty($login_user) || empty($senha_user))) {
+        require_once("../Data/conexao.php");
+
+        // Evitar SQL Injection utilizando prepared statements
+        $sql = "SELECT * FROM perfilusuario WHERE cpf = ? AND senha = ?";
+        $stmt = mysqli_prepare($conexao, $sql);
+        mysqli_stmt_bind_param($stmt, "ss", $login_user, $senha_user);
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+
+        if(mysqli_num_rows($res) == 0) {
+            session_destroy();
+            echo "<script>alert('Login incorreto!'); window.location='./login.php';</script>";
+            exit;
+        } else {
+            // Iniciar sessão e redirecionar para a página restrita
+            $_SESSION["login_user"] = $login_user; // Armazenar apenas o login na sessão
+            header("Location: ./user.php");
+            exit;
+        }
+    } else { 
+        session_destroy();
+        echo "Você não efetuou o login!";
+        exit;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,10 +48,10 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form action="#" method="post" onsubmit="return verifyUser()">
+        <form action="#" method="post">
             <div class="form-group">
-                <label for="CPF">CPF</label>
-                <input type="text" id="CPF" name="CPF" required>
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" required>
             </div>
             <div class="form-group">
                 <label for="senha">Senha:</label>
