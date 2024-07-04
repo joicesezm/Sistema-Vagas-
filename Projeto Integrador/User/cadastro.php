@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']) && $_POST['s
     // Validações adicionais, se necessário (ex: validar o formato do CPF)
 
     // Prepara a query SQL usando prepared statement
-    $stmt = $conexao->prepare("INSERT INTO cadastrocandidato (cpf, senha) VALUES (?, ?)");
+    $stmt = $conexao->prepare("INSERT INTO perfilusuario (cpf, senha) VALUES (?, ?)");
     $stmt->bind_param("is", $cpf, $senha);
 
     // Executa a query

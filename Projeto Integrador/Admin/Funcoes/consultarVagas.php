@@ -8,7 +8,7 @@
     <?php
     // Inicia a sessão da página
     session_start();
-    include("../Data/conexao.php");
+    include("../../Data/conexao.php");
 
     // Verifica se há uma mensagem de sucesso ou erro da sessão
     if (isset($_SESSION['msg'])) {

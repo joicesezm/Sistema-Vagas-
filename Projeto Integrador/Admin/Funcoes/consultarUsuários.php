@@ -1,7 +1,7 @@
 <?php
 // Inicia a sessão da página
 session_start();
-include("../Data/conexao.php");
+include("../../Data/conexao.php");
 
 // Verifica se há uma mensagem de sucesso ou erro da sessão
 if (isset($_SESSION['msg'])) {
@@ -10,7 +10,7 @@ if (isset($_SESSION['msg'])) {
 }
 
 // Query para selecionar todos os usuários da tabela
-$result_usuarios = "SELECT * FROM cadastrocandidato";
+$result_usuarios = "SELECT * FROM perfilusuario";
 $resultado_usuarios = mysqli_query($conexao, $result_usuarios);
 
 ?>

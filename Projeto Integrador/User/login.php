@@ -23,7 +23,7 @@ if(isset($_POST["cpf"]) && isset($_POST["senha"])){
         } else {
             // Iniciar sessão e redirecionar para a página restrita
             $_SESSION["login_user"] = $login_user; // Armazenar apenas o login na sessão
-            header("Location: ./user.php");
+            header("Location: .\Perfil\user.php");
             exit;
         }
     } else { 

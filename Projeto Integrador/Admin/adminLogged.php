@@ -130,24 +130,21 @@
                 <ul>
                     Seus Dados
                     <li class="box-shadow">
-                        <button onclick="dynamicDisplay('even', 'url')"><b>Perfil de Administrador</b></button>
+                        <button onclick="dynamicDisplay('even', './Funcoes/perfilAdmin.php')"><b>Perfil de Administrador</b></button>
                     </li>
                     Área de Cadastro
                     <li class="box-shadow">
                         <button onclick="dynamicDisplay('odd', 'url')"><b>Cadastrar Novo Adm</b></button>
                     </li>
                     <li class="box-shadow">
-                        <button onclick="dynamicDisplay('even', 'url')"><b>Cadastrar Formações</b></button>
-                    </li>
-                    <li class="box-shadow">
-                        <button onclick="dynamicDisplay('odd', './../Outros-Arquivos/cadastroVagas2.html')"><b>Cadastrar Vagas</b></button>
+                        <button onclick="dynamicDisplay('even', './Funcoes/cadastroVagas.php')"><b>Cadastrar Vagas</b></button>
                     </li>
                     Área de Consultas
                     <li class="box-shadow">
-                        <button onclick="dynamicDisplay('even', './../Outros-Arquivos/consultarVagas.php')"><b>Consultar Vagas</b></button>
+                        <button onclick="dynamicDisplay('odd', './Funcoes/consultarVagas.php')"><b>Consultar Vagas</b></button>
                     </li>
                     <li class="box-shadow">
-                        <button onclick="dynamicDisplay('odd', './../Outros-Arquivos/consultarUsuários.php')"><b>Consultar Usuários</b></button>
+                        <button onclick="dynamicDisplay('even', './Funcoes/consultarUsuários.php')"><b>Consultar Usuários</b></button>
                     </li>
                 </ul>
             </nav>

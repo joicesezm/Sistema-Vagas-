@@ -1,3 +1,50 @@
+<?php
+ session_start();
+ require_once("../../Data/conexao.php");  
+
+// Verifica se os dados foram submetidos via método POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Verifica se todos os campos necessários foram preenchidos
+    if (empty($_POST["nomeEmpresa"]) || empty($_POST["cargo"]) || empty($_POST["email"]) ||
+        empty($_POST["local"]) || empty($_POST["requisitos"]) || empty($_POST["descricao"]) ||
+        empty($_POST["turno"])) {
+        echo "<script>alert('Por favor, preencha todos os campos.');</script>";
+    } else {
+        // Obtém os valores dos campos do formulário e sanitiza-os
+        $nomeEmpresa = filter_input(INPUT_POST, "nomeEmpresa", FILTER_SANITIZE_STRING);
+        $cargo = filter_input(INPUT_POST, "cargo", FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+        $localTrabalho = filter_input(INPUT_POST, "local", FILTER_SANITIZE_STRING);
+        $requisitos = filter_input(INPUT_POST, "requisitos", FILTER_SANITIZE_STRING);
+        $descricao = filter_input(INPUT_POST, "descricao", FILTER_SANITIZE_STRING);
+        $turno = filter_input(INPUT_POST, "turno", FILTER_SANITIZE_STRING);
+
+        if (!$email) {
+            echo "<script>alert('Por favor, forneça um email válido.');</script>";
+        } else {
+            // Prepara e executa a consulta SQL para inserir os dados na tabela
+            $sql = "INSERT INTO vaga (nomEmpresa, cargo, email, endereco, requisitos, descAtividades, turno)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conexao->prepare($sql);
+            $stmt->bind_param("sssssss", $nomeEmpresa, $cargo, $email, $localTrabalho, $requisitos, $descricao, $turno);
+            
+            if ($stmt->execute()) {
+                echo "<script>alert('Dados cadastrados com sucesso!');</script>";
+                // header("Location: /home.php");
+            } else {
+                echo "<script>alert('Erro ao cadastrar dados: " . $stmt->error . "');</script>";
+            }
+
+            // Fecha a declaração
+            $stmt->close();
+        }
+    }
+
+    // Fecha a conexão com o banco de dados
+    $conexao->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,123 +52,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cadastroVagas2.css">
+    <link href="../Data/CascadingCadVaga.css" rel="stylesheet">
     <title>Formulário</title>
-    <style>
-        /* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-}
-
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-image {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-image img {
-    max-width: 100%;
-    height: auto;
-}
-
-.form {
-    padding: 20px;
-}
-
-.form-header {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.form-header .title h1 {
-    font-size: 24px;
-    color: #333;
-}
-
-.input-group {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.input-box {
-    margin-bottom: 15px;
-}
-
-.input-box label {
-    display: block;
-    margin-bottom: 5px;
-    color: #666;
-    font-size: 14px;
-}
-
-.input-box input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.turno-inputs {
-    margin-bottom: 20px;
-}
-
-.turno-title h6 {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.turno-group {
-    display: flex;
-    gap: 10px;
-}
-
-.turno-input {
-    display: flex;
-    align-items: center;
-}
-
-.turno-input input[type="radio"] {
-    margin-right: 5px;
-}
-
-.continue-button {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.continue-button input[type="submit"] {
-    padding: 12px 24px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.continue-button input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-    </style>
 </head>
 
 <body>
@@ -208,3 +140,4 @@ body {
 </body>
 
 </html>
+
