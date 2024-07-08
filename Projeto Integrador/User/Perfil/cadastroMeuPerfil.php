@@ -1,3 +1,41 @@
+<?php
+ session_start();
+ require_once("..\Data\conexao.php");  
+
+// Verifica se os dados foram submetidos via método POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+    // Obtém os valores dos campos do formulário
+    $nome = $_POST["nome"];
+    $nascimento = $_POST["nascimento"];
+    $endereco = $_POST["endereco"];
+    $bairro = $_POST["bairro"];
+    $cidade = $_POST["cidade"];
+    $email = $_POST["email"];
+    $telefone = ["telefone"];
+
+      //estou aqui
+    // Prepara e executa a consulta SQL para inserir os dados na tabela
+    $sql = "INSERT INTO perfilusuario (nome, dataNascimento, endereco, bairro , cidade, email, telefone)
+            VALUES ('$nome', '$nascimento', '$endereco', '$bairro', '$cidade', '$email', '$telefone')";
+        $resultadoVagas = mysqli_query ($conexao, $sql);
+
+if ($resultadoVagas) {
+    echo "<script>alert('Dados cadastrados com sucesso!');</script>";
+   // header("Location: /home.php");
+
+} else {
+   // echo "<script>alert('ERRO!');</script>". $conexao->error;
+}
+
+// Fecha a conexão com o banco de dados
+
+$conexao->close();
+ 
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,14 +92,14 @@
 
 
 
-    <form action="#" method="post">
+    <form action="..\User\cadastroMeuPerfil.php" method="post">
     <h1>Cadastre suas Informações <br>
 Pessoais</h1>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
 
-        <label for="data-nascimento">Data de Nascimento:</label>
-        <input type="date" id="data-nascimento" name="data-nascimento" required>
+        <label for="nascimento">Data de Nascimento:</label>
+        <input type="date" id="nascimento" name="nascimento" required>
 
         <label for="endereco">Endereço:</label>
         <input type="text" id="endereco" name="endereco" required>
@@ -78,7 +116,9 @@ Pessoais</h1>
         <label for="telefone">Telefone:</label>
         <input type="tel" id="telefone" name="telefone" required>
 
+    
+
         <button type="submit">Enviar</button>
     </form>
 </body>
-</html>
+</html> 
