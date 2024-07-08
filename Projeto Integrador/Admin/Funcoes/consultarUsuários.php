@@ -245,7 +245,11 @@
                 <tr>
                     <td><?php echo $row_usuario['cpf']; ?></td>
                     <td><?php echo $row_usuario['nome']; ?></td>
-                    <td><button onclick="toggleDetails('<?php echo $row_usuario['cpf']; ?>')">Detalhes</button></td>
+                    <td><button onclick="toggleDetails('<?php echo $row_usuario['cpf']; ?>')">Detalhes</button>
+                        <button>Editar</button>
+                        <button>Excluir</button>
+                    </td>
+                    
                 </tr>
                 <tr class="hiddenTable" id="<?php echo $row_usuario['cpf']; ?>">
                     <td colspan="3">

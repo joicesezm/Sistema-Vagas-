@@ -251,7 +251,11 @@
                 <tr>
                     <td><?php echo $row_usuario['idVaga']; ?></td>
                     <td><?php echo $row_usuario['nomEmpresa']; ?></td>
-                    <td><button onclick="toggleDetails('<?php echo $row_usuario['idVaga']; ?>')">Detalhes</button></td>
+                    <td><button onclick="toggleDetails('<?php echo $row_usuario['idVaga']; ?>')">Detalhes</button>
+                        <button>Editar</button>
+                        <button>Excluir</button>
+                    </td>
+                    
                 </tr>
                 <tr class="hiddenTable" id="<?php echo $row_usuario['idVaga']; ?>">
                     <td colspan="3">
