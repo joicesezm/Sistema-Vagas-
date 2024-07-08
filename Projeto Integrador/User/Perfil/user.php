@@ -89,6 +89,7 @@
               <button onclick="dynamicDisplay('even', './cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
               <button onclick="dynamicDisplay('odd', './formacao.php')"><b>Formações</b></button>
               <button onclick="dynamicDisplay('even', './experiencias.php')"><b>Experiência</b></button>
+              <button onclick="dynamicDisplay('odd', './consultarVagasUser.php')"><b>Consultar Vagas</b></button>
             </div>
             <div class="flex-3" id="content">
                 <div id="even" class="hidden"></div>

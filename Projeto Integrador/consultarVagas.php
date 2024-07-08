@@ -22,22 +22,18 @@
     
     <nav>
         <ul>
+            <li><a href="index.html">Home</a></li>
             <li><a href="Contact.html">Contacte-nos</a></li>
             <li><a href="#">Sobre nós</a></li>
             <li><a href="#">Dúvidas</a></li>
         </ul>
     </nav>
 
-    <div class="content">
-        <img src="./img/fundoHome.jpeg" alt="Imagem de fundo" style="width: 100%; max-width: 600px; display: block; margin: 0 auto;">
-        
-        <div class="message">
-            <p>Faça login ou cadastre-se para visualizar as vagas.</p>
-        </div>
+    <div id="vagasCad">
+        VAGAS
     </div>
 
     <div class="btn-group">
-        <div class="vagas"><a href="./consultarVagas.php">Buscar Vagas</a></div>
         <a href="User/cadastro.php" class="btn">Cadastrar</a>
         <a href="User/login.php" class="btn">Login</a>
     </div>
