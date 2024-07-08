@@ -109,7 +109,15 @@
             box-shadow: 1px 1px 2px rgba(48, 47, 46, 0.5);
             border: solid 1px black;
         }
+        a {
+            text-decoration: none; /* Remove sublinhado */
+            color: #333; /* Define a cor do texto */
+        }
     </style>
+    <?php 
+        session_start();
+        include("../Data/conexao.php");
+    ?>
 </head>
 <body>
     <script src="..\Data\Validate.js"></script>
@@ -132,20 +140,26 @@
                     <li class="box-shadow">
                         <button onclick="dynamicDisplay('even', './Funcoes/perfilAdmin.php')"><b>Perfil de Administrador</b></button>
                     </li>
+
                     Área de Cadastro
                     <li class="box-shadow">
                         <button onclick="dynamicDisplay('odd', 'url')"><b>Cadastrar Novo Adm</b></button>
                     </li>
+
                     <li class="box-shadow">
                         <button onclick="dynamicDisplay('even', './Funcoes/cadastroVagas.php')"><b>Cadastrar Vagas</b></button>
                     </li>
+
                     Área de Consultas
-                    <li class="box-shadow">
-                        <button onclick="dynamicDisplay('odd', './Funcoes/consultarVagas.php')"><b>Consultar Vagas</b></button>
-                    </li>
-                    <li class="box-shadow">
-                        <button onclick="dynamicDisplay('even', './Funcoes/consultarUsuários.php')"><b>Consultar Usuários</b></button>
-                    </li>
+                    <a href="./Funcoes/consultarVagas.php"><li class="box-shadow">
+                        <b>Consultar Vagas</b>
+                    </li></a>
+                    
+
+                    <a href="./Funcoes/consultarUsuários.php"><li class="box-shadow">
+                        <b>Consultar Usuários</b>
+                    </li></a>
+
                 </ul>
             </nav>
             <div class="main">
