@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["nomeEmpresa"]) || empty($_POST["cargo"]) || empty($_POST["email"]) ||
         empty($_POST["local"]) || empty($_POST["requisitos"]) || empty($_POST["descricao"]) ||
         empty($_POST["turno"])) {
-        echo "<script>alert('Por favor, preencha todos os campos.');</script>";
+        echo "<script>alert('Por favor, preencha todos os campos.'); window.location = '../adminLogged.php';</script>";
     } else {
         // Obtém os valores dos campos do formulário e sanitiza-os
         $nomeEmpresa = filter_input(INPUT_POST, "nomeEmpresa", FILTER_SANITIZE_STRING);
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $turno = filter_input(INPUT_POST, "turno", FILTER_SANITIZE_STRING);
 
         if (!$email) {
-            echo "<script>alert('Por favor, forneça um email válido.');</script>";
+            echo "<script>alert('Por favor, forneça um email válido.'); window.location = '../adminLogged.php';</script>";
         } else {
             // Prepara e executa a consulta SQL para inserir os dados na tabela
             $sql = "INSERT INTO vaga (nomEmpresa, cargo, email, endereco, requisitos, descAtividades, turno)
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("sssssss", $nomeEmpresa, $cargo, $email, $localTrabalho, $requisitos, $descricao, $turno);
             
             if ($stmt->execute()) {
-                echo "<script>alert('Dados cadastrados com sucesso!');</script>";
+                echo "<script>alert('Dados cadastrados com sucesso!'); window.location = '../adminLogged.php';</script>";
                 // header("Location: /home.php");
             } else {
                 echo "<script>alert('Erro ao cadastrar dados: " . $stmt->error . "');</script>";
