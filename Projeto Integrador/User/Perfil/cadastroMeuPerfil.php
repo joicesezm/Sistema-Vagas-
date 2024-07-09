@@ -5,28 +5,29 @@ require_once("../../Data/conexao.php");
 // Verifica se o CPF está na sessão
 if (isset($_SESSION["login_user"])) {
     $cpf = $_SESSION["login_user"];
+
+    // Consulta SQL para obter os dados do perfil do usuário
+    $sql = "SELECT * FROM perfilusuario WHERE cpf = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $cpf);
+    mysqli_stmt_execute($stmt);
+    $resultado = mysqli_stmt_get_result($stmt);
+
+    if ($resultado && mysqli_num_rows($resultado) > 0) {
+        // Extrai os dados do perfil do usuário
+        $perfil = mysqli_fetch_assoc($resultado);
+    } else {
+        echo "Erro ao buscar perfil do usuário.";
+        exit;
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conexao);
 } else {
     // Caso não haja CPF na sessão, redireciona para o login
     header("Location: ./login.php");
     exit;
 }
-
-// Consulta SQL para obter os dados do perfil do usuário
-$sql = "SELECT * FROM perfilusuario WHERE cpf = ?";
-$stmt = mysqli_prepare($conexao, $sql);
-mysqli_stmt_bind_param($stmt, "s", $cpf);
-mysqli_stmt_execute($stmt);
-$resultado = mysqli_stmt_get_result($stmt);
-
-if (!$resultado || mysqli_num_rows($resultado) == 0) {
-    echo "Erro ao buscar perfil do usuário.";
-    exit;
-}
-
-// Extrai os dados do perfil do usuário
-$perfil = mysqli_fetch_assoc($resultado);
-mysqli_stmt_close($stmt);
-mysqli_close($conexao);
 ?>
 
 <!DOCTYPE html>
@@ -36,25 +37,25 @@ mysqli_close($conexao);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+         body {
+            font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-        }
-
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
             text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         label {
@@ -84,30 +85,30 @@ mysqli_close($conexao);
     <div class="container">
         <h1>Meu Perfil</h1>
 
-        <form action="./atualizarPerfil.php" method="post">
+        <form action="./atualizarPerfil.php" onsubmit="" method="post">
             <label for="cpf">CPF:</label>
             <input type="text" id="cpf" name="cpf" value="<?php echo htmlspecialchars($perfil['cpf']); ?>" readonly>
 
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($perfil['nome']); ?>" required>
+            <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($perfil['nome']); ?>" >
 
             <label for="nascimento">Data de Nascimento:</label>
-            <input type="date" id="nascimento" name="nascimento" value="<?php echo htmlspecialchars($perfil['dataNascimento']); ?>" required>
-
+            <input type="date" id="nascimento" name="nascimento" value="<?php echo htmlspecialchars($perfil['dataNascimento']); ?>" >
+        
             <label for="endereco">Endereço:</label>
-            <input type="text" id="endereco" name="endereco" value="<?php echo htmlspecialchars($perfil['endereco']); ?>" required>
+            <input type="text" id="endereco" placeholder="Formato: exemplo av./Rua, Nº" name="endereco" value="<?php echo htmlspecialchars($perfil['endereco']);  ?>" >
 
             <label for="bairro">Bairro:</label>
-            <input type="text" id="bairro" name="bairro" value="<?php echo htmlspecialchars($perfil['bairro']); ?>" required>
+            <input type="text" id="bairro" name="bairro" value="<?php echo htmlspecialchars($perfil['bairro']); ?>" >
 
             <label for="cidade">Cidade:</label>
-            <input type="text" id="cidade" name="cidade" value="<?php echo htmlspecialchars($perfil['cidade']); ?>" required>
+            <input type="text" id="cidade" name="cidade" value="<?php echo htmlspecialchars($perfil['cidade']); ?>">
 
             <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($perfil['email']); ?>" required>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($perfil['email']); ?>" >
 
             <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone" value="<?php echo htmlspecialchars($perfil['telefone']); ?>" required>
+            <input type="tel" id="telefone" name="telefone" value="<?php echo htmlspecialchars($perfil['telefone']); ?>" >
 
             <button type="submit">Atualizar Perfil</button>
         </form>

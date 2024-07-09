@@ -1,13 +1,14 @@
 <?php require_once('../../Data/conexao.php')?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Perfil</title>
     <style>
-        /* styles.css */
+        /* Estilos específicos para esta página */
+
+        /* Reset básico */
         body,
         html {
             margin: 0;
@@ -16,12 +17,14 @@
             font-family: Arial, sans-serif;
         }
 
+        /* Container principal */
         .container {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
+        /* Cabeçalho e rodapé */
         .header,
         .footer {
             background-color: #333;
@@ -30,6 +33,7 @@
             padding: 1em;
         }
 
+        /* Área de conteúdo principal */
         .content {
             display: flex;
             flex: 1;
@@ -37,18 +41,14 @@
             padding: 1em;
         }
 
+        /* Painel esquerdo (menu) */
         .flex-1 {
             flex: 1;
             padding: 1em;
             background-color: #f4f4f4;
         }
 
-        .flex-3 {
-            flex: 3;
-            padding: 1em;
-        }
-
-        button {
+        .flex-1 button {
             display: block;
             width: 100%;
             padding: 1em;
@@ -57,27 +57,63 @@
             color: white;
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        button:hover {
+        .flex-1 button:hover {
             background-color: #0056b3;
         }
 
-        @media (max-width: 768px) {
+        /* Painel direito (conteúdo dinâmico) */
+        .flex-3 {
+            flex: 3;
+            padding: 1em;
+        }
 
+        /* Ocultar inicialmente o conteúdo dinâmico */
+        .hidden {
+            display: none;
+        }
+
+        /* Mídia query para telas menores */
+        @media (max-width: 768px) {
             .flex-1,
             .flex-3 {
                 flex: 100%;
             }
         }
 
-        .hidden {
-            display: none;
+        /* Estilos para links nas redes sociais */
+        .footer a {
+            margin: 0 5px;
+        }
+
+        .footer img {
+            height: 40px;
         }
     </style>
-     <script src="../../Data/Validate.js"></script>
-</head>
 
+    <script>
+        function dynamicDisplay(divId, arquivo) {
+            // Esconde todas as divs dentro de .flex-3
+            var contentDivs = document.querySelectorAll('.flex-3 > div');
+            contentDivs.forEach(div => {
+                div.classList.add('hidden');
+            });
+
+            // Carrega o conteúdo do arquivo usando fetch
+            fetch(arquivo)
+                .then(response => response.text())
+                .then(data => {
+                    // Insere o conteúdo carregado na div correspondente
+                    var divToShow = document.getElementById(divId);
+                    divToShow.innerHTML = data;
+                    divToShow.classList.remove('hidden');
+                })
+                .catch(error => console.error('Erro ao carregar o arquivo:', error));
+        }
+    </script>
+</head>
 <body>
     <div class="container">
         <header class="header">
@@ -86,37 +122,31 @@
         <nav class="header">Procure pela melhor vaga para você aqui!</nav>
         <div class="content">
             <div class="flex-1">
-              <button onclick="dynamicDisplay('even', './cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
-              <button onclick="dynamicDisplay('odd', './formacao.php')"><b>Formações</b></button>
-              <button onclick="dynamicDisplay('even', './experiencias.php')"><b>Experiência</b></button>
-              <button onclick="dynamicDisplay('odd', './consultarVagasUser.php')"><b>Consultar Vagas</b></button>
+                <button onclick="dynamicDisplay('even', './cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
+                <button onclick="dynamicDisplay('odd', './formacao.php')"><b>Formações</b></button>
+                <button onclick="dynamicDisplay('even', './experiencias.php')"><b>Experiência</b></button>
+                <button onclick="dynamicDisplay('odd', './consultarVagasUser.php')"><b>Consultar Vagas</b></button>
             </div>
             <div class="flex-3" id="content">
                 <div id="even" class="hidden"></div>
                 <div id="odd" class="hidden"></div>
             </div>
         </div>
-        <footer>
-        <div class="footer">
-            <!-- Instagram -->
+        <footer class="footer">
+            <!-- Links para redes sociais -->
             <a href="https://www.instagram.com/seuperfil" target="_blank">
-                <img src="../img/instagram.png" alt="Instagram" style="height: 40px;">
+                <img src="../../img/instagram.png" alt="Instagram">
             </a>
-            <!-- Twitter -->
             <a href="https://twitter.com/seuperfil" target="_blank">
-                <img src="../img/x.png.png" alt="Twitter" style="height: 40px;">
+                <img src="../../img/x.png.png" alt="Twitter">
             </a>
-            <!-- Facebook -->
             <a href="https://www.facebook.com/seuperfil" target="_blank">
-                <img src="../img/face.png.png" alt="Facebook" style="height: 40px;">
+                <img src="../../img/face.png.png" alt="Facebook">
             </a>
-            <!-- WhatsApp -->
             <a href="https://api.whatsapp.com/send?phone=seunumerodetelefone" target="_blank">
-                <img src="../img/whatsapp.png" alt="WhatsApp" style="height: 40px;">
+                <img src="../../img/whatsapp.png" alt="WhatsApp">
             </a>
-        </div>
-    </footer>
+        </footer>
     </div>
 </body>
-
 </html>

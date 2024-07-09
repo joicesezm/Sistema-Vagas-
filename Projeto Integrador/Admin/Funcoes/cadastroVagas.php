@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <img src="..\img\undraw_learning_sketching_nd4f.svg" alt="img">
         </div>
         <div class="form">
-            <form action="..\Admin\cadastroVagas.php" method="POST" name="cadastroVagas">
+            <form action="./Funcoes/cadastroVagas.php" method="POST" name="cadastroVagas">
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastrar vagas</h1>
