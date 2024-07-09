@@ -10,6 +10,49 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+  /* Estilos para o modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .vaga {
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+  }
+  .vaga:hover {
+    background-color: #f0f0f0;
+  }
+</style>
 </head>
 
 <body>
@@ -30,7 +73,85 @@
     </nav>
 
     <div id="vagasCad">
-        VAGAS
+
+<h2>Vagas de Emprego</h2>
+
+<!-- Lista de vagas -->
+<div id="listaVagas">
+  <?php
+  // PHP para recuperar dados do banco de dados e exibir na lista
+  include './Data/conexao.php';
+
+  $sql = "SELECT idVaga, nomEmpresa, cargo, turno FROM vaga";
+  $result = $conexao->query($sql);
+
+  if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+      // Exibindo apenas nome da empresa, cargo e turno
+      echo "<div class='vaga' onclick='openModal(" . $row['idVaga'] . ")'>";
+      echo "<h3>" . $row['nomEmpresa'] . "</h3>";
+      echo "<p><strong>Cargo:</strong> " . $row['cargo'] . "</p>";
+      echo "<p><strong>Turno:</strong> " . $row['turno'] . "</p>";
+      echo "</div>";
+    }
+  } else {
+    echo "0 resultados";
+  }
+
+  $conexao->close();
+  ?>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <!-- Conteúdo do modal -->
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div id="modalContent">
+      <!-- Aqui serão exibidas as informações detalhadas da vaga -->
+    </div>
+    <!-- Botão "Candidatar-se para vaga" -->
+    <button onclick="chata()">Candidatar-se para vaga</button>
+    <script>
+        function chata(){
+            alert('Cadastre-se para se Candidatar');
+            window.location.href='./User/cadastro.php'
+        }
+    </script>
+  </div>
+</div>
+
+<script>
+// Funções JavaScript para abrir e fechar o modal
+function openModal(idVaga) {
+  // Requisição AJAX para buscar detalhes da vaga
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("modalContent").innerHTML = this.responseText;
+      document.getElementById('myModal').style.display = 'block';
+    }
+  };
+  xhttp.open("GET", "detalhes_vaga.php?idVaga=" + idVaga, true);
+  xhttp.send();
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = 'none';
+}
+
+// Fechar o modal clicando fora da área do modal
+window.onclick = function(event) {
+  var modal = document.getElementById('myModal');
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+
+
     </div>
 
     <div class="btn-group">
