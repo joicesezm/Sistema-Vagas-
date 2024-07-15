@@ -48,19 +48,26 @@
             background-color: #f4f4f4;
         }
 
-        .flex-1 button {
+        /* Estilos para botões e links */
+        .flex-1 button,
+        .flex-1 a {
             display: block;
-            width: 100%;
+            width: 100%; /* Manter largura total */
             padding: 1em;
             margin-bottom: 1em;
             background-color: #007BFF;
             color: white;
+            text-decoration: none;
+            text-align: center;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-size: 16px; /* Tamanho de fonte desejado */
+            box-sizing: border-box; /* Garantir que padding não aumente o tamanho */
         }
 
-        .flex-1 button:hover {
+        .flex-1 button:hover,
+        .flex-1 a:hover {
             background-color: #0056b3;
         }
 
@@ -125,7 +132,7 @@
                 <button onclick="dynamicDisplay('even', './cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
                 <button onclick="dynamicDisplay('odd', './formacao.php')"><b>Formações</b></button>
                 <button onclick="dynamicDisplay('even', './experiencias.php')"><b>Experiência</b></button>
-                <button onclick="dynamicDisplay('odd', './consultarVagasUser.php')"><b>Consultar Vagas</b></button>
+                <a id="aestranho" href="./consultarVagasUser.php"><b>Consultar Vagas</b></a>
             </div>
             <div class="flex-3" id="content">
                 <div id="even" class="hidden"></div>
