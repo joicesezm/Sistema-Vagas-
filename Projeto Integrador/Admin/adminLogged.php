@@ -143,7 +143,7 @@
 
                     Área de Cadastro
                     <li class="box-shadow">
-                        <button onclick="dynamicDisplay('odd', 'url')"><b>Cadastrar Novo Adm</b></button>
+                        <button onclick="dynamicDisplay('odd', './Funcoes/cadastroAdmin.php')"><b>Cadastrar Novo Adm</b></button>
                     </li>
 
                     <li class="box-shadow">
