@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-if(isset($_POST["user"]) && isset($_POST["pass"])){
+if (isset($_POST["user"]) && isset($_POST["pass"])) {
     $login_user = $_POST["user"];
     $senha_user = $_POST["pass"];
-    
-     //!(nega)Verifica se os campos estão vazios
-    if(!(empty($login_user) || empty($senha_user))) {
+
+    // Verifica se os campos estão vazios
+    if (!(empty($login_user) || empty($senha_user))) {
         require_once("../Data/conexao.php");
 
         // Evitar SQL Injection utilizando prepared statements
@@ -16,23 +16,29 @@ if(isset($_POST["user"]) && isset($_POST["pass"])){
         mysqli_stmt_execute($stmt);
         $res = mysqli_stmt_get_result($stmt);
 
-        if(mysqli_num_rows($res) == 0) {
+        if (mysqli_num_rows($res) == 0) {
             session_destroy();
             echo "<script>alert('Login incorreto!'); window.location='./loginAdmin.php';</script>";
             exit;
         } else {
+            // Obtém o ID do administrador
+            $row = mysqli_fetch_assoc($res);
+            $id_admin = $row['id']; // Supondo que o campo no banco de dados seja 'id'
+
             // Iniciar sessão e redirecionar para a página restrita
             $_SESSION["login_user"] = $login_user; // Armazenar apenas o login na sessão
+            $_SESSION["id_admin"] = $id_admin; // Armazenar o ID do administrador na sessão
             header("Location: adminLogged.php");
             exit;
         }
-    } else { 
+    } else {
         session_destroy();
         echo "Você não efetuou o login!";
         exit;
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
