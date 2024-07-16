@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04/07/2024 às 15:31
+-- Tempo de geração: 16/07/2024 às 16:09
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -32,7 +32,7 @@ CREATE TABLE `experiencias` (
   `descricao` varchar(45) NOT NULL,
   `dataInicio` date NOT NULL,
   `dataFim` date NOT NULL,
-  `idCpfCandidato` int(11) NOT NULL
+  `idCpfCandidato` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -47,19 +47,7 @@ CREATE TABLE `formacao` (
   `dataInicio` date NOT NULL,
   `instituicao` varchar(45) NOT NULL,
   `dataFim` date NOT NULL,
-  `idCpfCandidato` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `habilidades`
---
-
-CREATE TABLE `habilidades` (
-  `idHabilidades` bigint(11) NOT NULL,
-  `descricaoHab` varchar(45) NOT NULL,
-  `idCpfCandidato` int(11) NOT NULL
+  `idCpfCandidato` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -136,14 +124,6 @@ ALTER TABLE `formacao`
   ADD KEY `idCpfCandidato` (`idCpfCandidato`);
 
 --
--- Índices de tabela `habilidades`
---
-ALTER TABLE `habilidades`
-  ADD PRIMARY KEY (`idHabilidades`),
-  ADD KEY `hab_candidato` (`descricaoHab`),
-  ADD KEY `idCpfCandidato` (`idCpfCandidato`);
-
---
 -- Índices de tabela `loginadmin`
 --
 ALTER TABLE `loginadmin`
@@ -186,12 +166,6 @@ ALTER TABLE `experiencias`
 --
 ALTER TABLE `formacao`
   MODIFY `idFormacao` bigint(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `habilidades`
---
-ALTER TABLE `habilidades`
-  MODIFY `idHabilidades` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `loginadmin`
