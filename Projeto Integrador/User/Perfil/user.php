@@ -126,7 +126,7 @@
         <header class="header">
             <h1>Seu Perfil</h1>
         </header>
-        <nav class="header">Procure pela melhor vaga para você aqui!</nav>
+        <nav class="header"><a href="../logout.php">LogOut</a></nav>
         <div class="content">
             <div class="flex-1">
                 <button onclick="dynamicDisplay('even', './cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
