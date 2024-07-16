@@ -89,6 +89,7 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 14px;
+            border-color: #2980b9;
         }
 
         .form-group button {
@@ -117,12 +118,12 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
         <h2>Login Administrador</h2>
         <form name="myForm" method="post" onsubmit="return verifyAdmin()" action="">
             <div class="form-group">
-                <label for="user">User</label>
-                <input type="text" id="user" name="user" required>
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" name="usuario" required>
             </div>
             <div class="form-group">
-                <label for="pass">Password</label>
-                <input type="password" id="pass" name="pass" required>
+                <label for="senha">Senha</label>
+                <input type="text" id="senha" name="senha" required>
             </div>
 
             <div class="form-group">
