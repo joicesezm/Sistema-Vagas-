@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/07/2024 às 16:09
+-- Tempo de geração: 16/07/2024 às 16:35
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -44,10 +44,9 @@ CREATE TABLE `experiencias` (
 CREATE TABLE `formacao` (
   `idFormacao` bigint(11) NOT NULL,
   `curso` varchar(45) NOT NULL,
-  `dataInicio` date NOT NULL,
   `instituicao` varchar(45) NOT NULL,
-  `dataFim` date NOT NULL,
-  `idCpfCandidato` bigint(11) NOT NULL
+  `idCpfCandidato` bigint(11) NOT NULL,
+  `situacao` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -66,7 +65,7 @@ CREATE TABLE `loginadmin` (
 -- Despejando dados para a tabela `loginadmin`
 --
 
-INSERT INTO `loginadmin` (`id`, `user`, `pass`) VALUES
+REPLACE INTO `loginadmin` (`id`, `user`, `pass`) VALUES
 (2, 'admin', '1234');
 
 -- --------------------------------------------------------
