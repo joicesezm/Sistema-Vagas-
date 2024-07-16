@@ -37,11 +37,8 @@ mysqli_close($conexao);
     <link rel="icon" href="../icon" type="image/png">
     <style> 
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
             background-color: #f0f0f0;
         }
 
@@ -96,6 +93,5 @@ mysqli_close($conexao);
 
         <button type="submit">Atualizar</button>
     </form>
-
 </body>
 </html>

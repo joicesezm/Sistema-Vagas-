@@ -83,9 +83,16 @@ $conexao->close();
         #titulo{
             text-align: center;
         }
+        .container-perfil {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
+    <div ></div>
     <div id="titulo">
     <h2>Cadastro de Novo Administrador</h2>
     </div>
@@ -95,6 +102,7 @@ $conexao->close();
         unset($_SESSION['msg']);
     }
     ?>
+    <div>
     <form name="cadastro-form" method="post" action="./Funcoes/cadastroAdmin.php">
         <label for="username">Usuário:</label>
         <input type="text" id="username" name="username" required>
@@ -104,5 +112,6 @@ $conexao->close();
 
         <input type="submit" name="submit" value="Cadastrar">
     </form>
+    </div>
 </body>
 </html>

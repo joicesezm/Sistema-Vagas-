@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if (isset($_POST["user"]) && isset($_POST["pass"])) {
-    $login_user = $_POST["user"];
-    $senha_user = $_POST["pass"];
+if (isset($_POST["usuario"]) && isset($_POST["senha"])) {
+    $login_user = $_POST["usuario"];
+    $senha_user = $_POST["senha"];
 
     // Verifica se os campos estão vazios
     if (!(empty($login_user) || empty($senha_user))) {

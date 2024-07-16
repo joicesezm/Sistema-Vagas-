@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exibir Conteúdo HTML Dinamicamente</title>
+    <title>Senac</title>
     <style>
         /* Estilos gerais */
         * {
@@ -28,20 +29,22 @@
         }
 
         .logo-left img {
-            width: 200px; /* Ajuste o tamanho conforme necessário */
+            width: 200px;
+            /* Ajuste o tamanho conforme necessário */
             height: auto;
         }
 
         .logo-right img {
-            width: 50px; /* Ajuste o tamanho conforme necessário */
+            width: 50px;
+            /* Ajuste o tamanho conforme necessário */
             height: auto;
         }
 
         .titulo {
             font-size: x-large;
         }
-        
-        .container {
+
+        .container-admin {
             max-width: 1200px;
             margin: 0 auto;
             background-color: #fff;
@@ -63,33 +66,46 @@
             list-style-type: none;
             padding: 0;
         }
+
         nav ul li:hover {
-    cursor: pointer;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Sombra preta suave no hover */
-    border-color: #5e5364; /* Cor da borda no hover */
-    transform: scale(1.02); /* Zoom de 5% no hover */
-}
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            /* Sombra preta suave no hover */
+            border-color: #5e5364;
+            /* Cor da borda no hover */
+            transform: scale(1.02);
+            /* Zoom de 5% no hover */
+        }
+
         nav ul li {
             margin-bottom: 10px;
-            display: flex; /* Torna o <li> um flex container */
-            align-items: center; /* Alinha itens verticalmente */
-            padding: 10px; /* Espaçamento interno */
-            transition: box-shadow 0.1s ease, transform 0.1s ease; /* Transições suaves */
+            display: flex;
+            /* Torna o <li> um flex container */
+            align-items: center;
+            /* Alinha itens verticalmente */
+            padding: 10px;
+            /* Espaçamento interno */
+            transition: box-shadow 0.1s ease, transform 0.1s ease;
+            /* Transições suaves */
         }
 
         nav ul li button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    text-decoration: none;
-    padding: 10px; /* Ajuste o padding conforme necessário */
-    width: 100%; /* Ocupa toda a largura do <li> */
-    display: block; /* Para ocupar todo o espaço do <li> */
-    text-align: left; /* Alinha o texto do botão à esquerda */
-    transition: color 0.3s ease;
-}
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            /* Ajuste o padding conforme necessário */
+            width: 100%;
+            /* Ocupa toda a largura do <li> */
+            display: block;
+            /* Para ocupar todo o espaço do <li> */
+            text-align: left;
+            /* Alinha o texto do botão à esquerda */
+            transition: color 0.3s ease;
+        }
 
         nav ul li button:hover {
             color: none;
@@ -109,19 +125,23 @@
             box-shadow: 1px 1px 2px rgba(48, 47, 46, 0.5);
             border: solid 1px black;
         }
+
         a {
-            text-decoration: none; /* Remove sublinhado */
-            color: #333; /* Define a cor do texto */
+            text-decoration: none;
+            /* Remove sublinhado */
+            color: #333;
+            /* Define a cor do texto */
         }
     </style>
-    <?php 
-        session_start();
-        include("../Data/conexao.php");
+    <?php
+    session_start();
+    include("../Data/conexao.php");
     ?>
 </head>
+
 <body>
     <script src="..\Data\Validate.js"></script>
-    <div class="container">
+    <div class="container-admin">
         <header>
             <div class="logo-left">
                 <img src="../img/senacLogo.jpeg" alt="Imagem à esquerda">
@@ -130,7 +150,10 @@
                 Projeto Sistema de Vagas - Área de Administração
             </div>
             <div class="logo-right">
-                <img src="../img/admins.png" alt="Imagem à direita">
+                <a href="logout.php">
+                    <img src="../img/admins.png" alt="Imagem à direita">
+                </a>
+                <p>Log Out</p>
             </div>
         </header>
         <div class="content">
@@ -151,14 +174,18 @@
                     </li>
 
                     Área de Consultas
-                    <a href="./Funcoes/consultarVagas.php"><li class="box-shadow">
-                        <b>Consultar Vagas</b>
-                    </li></a>
-                    
+                    <a href="./Funcoes/consultarVagas.php">
+                        <li class="box-shadow">
+                            <b>Consultar Vagas</b>
+                        </li>
+                    </a>
 
-                    <a href="./Funcoes/consultarUsuários.php"><li class="box-shadow">
-                        <b>Consultar Usuários</b>
-                    </li></a>
+
+                    <a href="./Funcoes/consultarUsuários.php">
+                        <li class="box-shadow">
+                            <b>Consultar Usuários</b>
+                        </li>
+                    </a>
 
                 </ul>
             </nav>
@@ -170,4 +197,5 @@
     </div>
 
 </body>
+
 </html>
