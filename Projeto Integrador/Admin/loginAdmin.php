@@ -74,6 +74,7 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
         .form-group {
             margin-bottom: 15px;
             text-align: left;
+            position: relative; 
         }
 
         .form-group label {
@@ -92,6 +93,15 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
             border-color: #2980b9;
         }
 
+        .form-group .lnr-eye {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(30%);
+            cursor: pointer;
+            z-index: 1; /* Garante que o ícone fique sobre o campo de senha */
+            color: #2980b9; /* Cor do ícone */
+        }
         .form-group button {
             background-color: #2980b9;
             color: white;
@@ -110,7 +120,8 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loggin- Tema Azul</title>
-    
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <script src="../Data/Validate.js"></script>
 </head>
 
 <body>
@@ -124,6 +135,7 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
             <div class="form-group">
                 <label for="senha">Senha</label>
                 <input type="text" id="senha" name="senha" required>
+                <span class="lnr lnr-eye" id="togglePassword"></span>
             </div>
 
             <div class="form-group">
@@ -132,7 +144,7 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
         </form>
     </div>
 
-    <script src="../Data/Validate.js"></script>
+  
 </body>
 
 </html>

@@ -37,3 +37,13 @@ function dynamicDisplay(divId, arquivo) {
         })
         .catch(error => console.error('Erro ao carregar o arquivo:', error));
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    let togglePassword = document.getElementById('togglePassword');
+    let passwordField = document.getElementById('senha');
+
+    togglePassword.addEventListener('click', function() {
+        let type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+    });
+});
