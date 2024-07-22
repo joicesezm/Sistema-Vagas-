@@ -159,7 +159,7 @@ window.onclick = function(event) {
         <a href="User/login.php" class="btn">Login</a>
     </div>
 
-    <!-- Footer -->
+  <div>
     <footer>
         <div class="footer-icons">
             <!-- Instagram -->
@@ -180,6 +180,6 @@ window.onclick = function(event) {
             </a>
         </div>
     </footer>
-
+    </div>
 </body>
 </html>
