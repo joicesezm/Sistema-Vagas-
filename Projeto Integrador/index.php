@@ -141,7 +141,7 @@
         </div>
     </footer>
 
-    <script src="./data/script.js"></script>
+    <script src="./data/index-script.js"></script>
 
 </body>
 
