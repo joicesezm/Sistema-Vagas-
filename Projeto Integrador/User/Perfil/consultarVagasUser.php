@@ -201,7 +201,7 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>Seu Perfil</h1>
+            <h1>Perfil do Usuário</h1>
         </header>
         <div class="content">
             <div class="flex-1">

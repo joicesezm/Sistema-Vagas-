@@ -184,15 +184,57 @@ mysqli_close($conexao);
         .footer img {
             height: 40px;
         }
+
+        header {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            max-height: 100px;
+        }
+
+        .header img {
+            max-width: 40px;
+        }
+
+        .logo-right {
+            position: fixed;
+            /* Fixar a posição em relação à janela de visualização */
+            top: 10px;
+            /* Ajuste a distância do topo conforme necessário */
+            right: 10px;
+            /* Ajuste a distância da borda direita conforme necessário */
+            text-align: center;
+            /* Centraliza o conteúdo dentro da div */
+        }
+
+        .logo-right img {
+            display: block;
+            /* Faz com que a imagem seja um bloco, garantindo que o texto fique embaixo */
+            margin: 0 auto;
+            /* Centraliza a imagem horizontalmente */
+        }
+
+        .logo-right small {
+            display: block;
+            /* Garante que o texto fique embaixo da imagem */
+            margin-top: 4px;
+            /* Ajusta o espaço entre a imagem e o texto, ajuste conforme necessário */
+        }
     </style>
 </head>
 <body>
 
         <div class="container">
         <header class="header">
-            <h1>Seu Perfil</h1>
+            <h1>Perfil do Usuário</h1>
+            <div class="logo-right">
+                <a href="../logout.php">
+                    <img src="../../img/power-off.png" alt="power-off" class="logo-img">
+                </a>
+                <small class="logo-text">LogOut</small>
+            </div>
         </header>
-        <nav class="header"><a href="../logout.php">LogOut</a></nav>
         <div class="content">
             <div class="flex-1">
                 <a id="aestranho" href="./user.php"><b>Voltar</b></a>

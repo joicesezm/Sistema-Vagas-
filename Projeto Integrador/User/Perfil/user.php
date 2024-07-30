@@ -1,6 +1,37 @@
-<?php require_once('../../Data/conexao.php')?>
+<?php
+session_start();
+require_once("../../Data/conexao.php");
+
+// Verifica se o CPF está na sessão
+if (isset($_SESSION["login_user"])) {
+    $cpf = $_SESSION["login_user"];
+
+    // Consulta SQL para obter os dados do perfil do usuário
+    $sql = "SELECT * FROM perfilusuario WHERE cpf = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $cpf);
+    mysqli_stmt_execute($stmt);
+    $resultado = mysqli_stmt_get_result($stmt);
+
+    if ($resultado && mysqli_num_rows($resultado) > 0) {
+        // Extrai os dados do perfil do usuário
+        $perfil = mysqli_fetch_assoc($resultado);
+    } else {
+        echo "Erro ao buscar perfil do usuário.";
+        exit;
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conexao);
+} else {
+    // Caso não haja CPF na sessão, redireciona para o login
+    header("Location: ./login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,18 +83,21 @@
         .flex-1 button,
         .flex-1 a {
             display: block;
-            width: 100%; /* Manter largura total */
+            width: 100%;
+            /* Manter largura total */
             padding: 1em;
             margin-bottom: 1em;
-            background-color: #007BFF;
+            background-color: #00CED1;
             color: white;
             text-decoration: none;
             text-align: center;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            font-size: 16px; /* Tamanho de fonte desejado */
-            box-sizing: border-box; /* Garantir que padding não aumente o tamanho */
+            font-size: 16px;
+            /* Tamanho de fonte desejado */
+            box-sizing: border-box;
+            /* Garantir que padding não aumente o tamanho */
         }
 
         .flex-1 button:hover,
@@ -84,6 +118,7 @@
 
         /* Mídia query para telas menores */
         @media (max-width: 768px) {
+
             .flex-1,
             .flex-3 {
                 flex: 100%;
@@ -97,6 +132,58 @@
 
         .footer img {
             height: 40px;
+        }
+
+        .header a {
+
+            margin-left: 300%;
+
+        }
+
+        header {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            max-height: 100px;
+        }
+
+        .header img {
+            max-width: 40px;
+        }
+
+        .logo-right {
+            position: fixed;
+            /* Fixar a posição em relação à janela de visualização */
+            top: 10px;
+            /* Ajuste a distância do topo conforme necessário */
+            right: 10px;
+            /* Ajuste a distância da borda direita conforme necessário */
+            text-align: center;
+            /* Centraliza o conteúdo dentro da div */
+        }
+
+        .logo-right img {
+            display: block;
+            /* Faz com que a imagem seja um bloco, garantindo que o texto fique embaixo */
+            margin: 0 auto;
+            /* Centraliza a imagem horizontalmente */
+        }
+
+        .logo-right small {
+            display: block;
+            /* Garante que o texto fique embaixo da imagem */
+            margin-top: 4px;
+            /* Ajusta o espaço entre a imagem e o texto, ajuste conforme necessário */
+        }
+
+
+
+
+
+
+        #hello-world {
+            text-align: center;
         }
     </style>
 
@@ -121,12 +208,20 @@
         }
     </script>
 </head>
+
 <body>
     <div class="container">
         <header class="header">
-            <h1>Seu Perfil</h1>
+            <h1>Perfil do Usuário</h1>
+            <div class="logo-right">
+                <a href="../logout.php">
+                    <img src="../../img/power-off.png" alt="power-off" class="logo-img">
+                </a>
+                <small class="logo-text">LogOut</small>
+            </div>
         </header>
-        <nav class="header"><a href="../logout.php">LogOut</a></nav>
+
+
         <div class="content">
             <div class="flex-1">
                 <button onclick="dynamicDisplay('even', './cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
@@ -136,9 +231,17 @@
                 <button onclick="dynamicDisplay('even', './experiencias.php')"><b>Experiência</b></button>
                 <a id="aestranho" href="./consultarExperiencia.php"><b>Consultar Experiências</b></a>
                 Area de Vagas
-                <a id="aestranho" href="./consultarVagasUser.php"><b>Consultar Vagas</b></a>
+                <a id="aestranho" href="./consultarVagasUser.php"><b>Consultar Vagas Disponiveis</b></a>
+                <a id="aestranho" href="#"><b>Consultar Vagas Já Candidatadas</b></a>
             </div>
             <div class="flex-3" id="content">
+                <div id="hello-world">
+                    <h1>BEM-VINDO
+                        <?php
+                        echo htmlspecialchars($perfil['nome']);
+                        ?>
+                    </h1>
+                </div>
                 <div id="even" class="hidden"></div>
                 <div id="odd" class="hidden"></div>
             </div>
@@ -160,4 +263,5 @@
         </footer>
     </div>
 </body>
+
 </html>
