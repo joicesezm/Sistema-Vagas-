@@ -1,0 +1,276 @@
+/* Estilos gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
+}
+/* Estilos do header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    position: relative;
+}
+
+header img {
+    height: auto;
+    max-width: 100%;
+}
+
+header h1 {
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.admin-page {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+/* Estilos do menu de navegação */
+nav {
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Ajuste o tamanho da fonte conforme necessário */
+    transition: background-color 0.3s ease;
+}
+
+nav ul li button:hover {
+    background-color: #555;
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+
+
+/* Estilos do conteúdo principal */
+#content {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 600px;
+    margin-bottom: 30px; /* Ajuste a margem inferior para acomodar o footer */
+    padding-bottom: 20px; /* Ajuste opcional para espaçamento inferior */
+}
+
+#content img {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Estilos do grupo de botões */
+#buttons {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.button:last-child {
+    margin-right: 0;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+/* Estilos específicos para o elemento .vagas */
+.vagas {
+    padding: 8px;
+    margin: 1%;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos das Caixas Centralizadas */
+#center-box {
+    background-color: #fff;
+    max-width: 800px;
+    margin: 50px auto; /* Centraliza horizontalmente */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    border-radius: 8px;
+    text-align: left; /* Alinha o texto à esquerda */
+    font-family: 'Roboto', sans-serif; /* Fonte para o texto do corpo */
+    position: relative; /* Garante que o conteúdo dentro da div não seja afetado pelo footer */
+    z-index: 1; /* Garante que a div fique acima do footer */
+    margin-bottom: 60px; /* Ajusta o espaço para acomodar o footer */
+} h2 {
+    text-align: center;
+}
+
+/* Estilos do rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    position: relative; /* Garante que o footer se posicione em relação ao contêiner pai */
+    margin-top: auto; /* Garante que o footer se mova para baixo */
+    bottom: 0;
+    left: 0;
+    z-index: 0; /* Garante que o footer fique abaixo da div #center-box */
+}
+
+/* Ajusta o padding do footer se necessário */
+footer .footer-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .footer-icons a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer .footer-icons img {
+    height: 40px;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 600px) {
+    #center-box {
+        margin: 20px auto; /* Ajusta a margem em dispositivos móveis */
+        padding: 15px; /* Ajusta o padding em dispositivos móveis */
+    }
+
+    footer {
+        padding: 15px 0; /* Ajusta o padding do footer em dispositivos móveis */
+    }
+}
+
+/* Estilos do Formulário */
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+legend {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+input[type="tel"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none; /* Impede o redimensionamento */
+    height: 100px;
+}
+
+input[type="tel"] {
+    margin-top: 5px;
+}
+
+button.text-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button.text-button:hover {
+    background-color: #555;
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    button.text-button {
+        width: 100%; /* Botão ocupa toda a largura em telas menores */
+    }
+}
+
