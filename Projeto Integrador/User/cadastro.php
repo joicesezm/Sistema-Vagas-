@@ -40,15 +40,17 @@ session_destroy();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Tema Azul</title>
     <link rel="stylesheet" href="../Data/CascadingLogCad.css">
+    <script src="../Data/Validate.js"></script>
 </head>
 <body>
     <div class="container">
         <h2>Cadastro</h2>
-        <form name="cadastro-form" method="post" onsubmit="" action="">
+        <form name="cadastro-form" method="post" onsubmit="return verifyUser()" action="">
     
             <div class="form-group">
                 <label for="cpf">CPF</label>
-                <input type="text" id="cpf" name="cpf" required>
+                <input type="text" id="cpf" name="cpf" placeholder="CPF (XXX.XXX.XXX-XX)" required>
+                <small>Formato: XXX.XXX.XXX-XX</small>
             </div>
             <div class="form-group">
                 <label for="senha">Senha:</label>

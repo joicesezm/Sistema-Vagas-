@@ -1,25 +1,22 @@
 function verifyUser() {
-    const cpfInput = document.getElementById("cpfcpf");
-    const senhaInput = document.getElementById("senhasenha");
-    const senhaValue = senhaInput.value.trim();
-    const incCpf = document.getElementById("incCpf");
-    const incSenha = document.getElementById("incSenha");
+    // Obtém o valor do campo cpf
+    let cpf = document.forms["cadastro-form"]["cpf"].value.trim();
+    
+    // Define a expressão regular para validar o CPF no formato XXX.XXX.XXX-XX
     const regexCpf = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
 
-    if (!regexCpf.test(cpfInput.value.trim())) {
-        incCpf.textContent = "*Insira um CPF válido";
-        return false;
+    // Verifica se o CPF está vazio ou não corresponde ao formato esperado
+    if (cpf === "" || !regexCpf.test(cpf)) {
+        alert("*Insira um CPF válido");
+        return false; // CPF inválido
     } else {
-        incCpf.textContent = "";
+        console.log("sucesso");
     }
-    return true;
+    
+    return true; // CPF válido
 }
 
 
-function verifyAdmin() {
-    let y = document.forms["myForm"]["user"].value;
-    let x = document.forms["myForm"]["pass"].value;
-}
 
 function dynamicDisplay(divId, arquivo) {
     // Esconde todas as divs
