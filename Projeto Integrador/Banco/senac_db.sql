@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/07/2024 às 16:38
+-- Tempo de geração: 30/07/2024 às 15:15
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `senac_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `curriculo`
+--
+
+CREATE TABLE `curriculo` (
+  `id` int(11) NOT NULL,
+  `pdf` varchar(50) DEFAULT NULL,
+  `idCpfCandidato` bigint(11) DEFAULT NULL,
+  `idVaga` bigint(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -79,12 +92,20 @@ CREATE TABLE `perfilusuario` (
   `nome` varchar(45) DEFAULT NULL,
   `dataNascimento` date DEFAULT NULL,
   `endereco` varchar(45) DEFAULT NULL,
-  `bairro` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `telefone` char(14) NOT NULL,
+  `bairro` varchar(45) DEFAULT NULL,
+  `cidade` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `telefone` char(14) DEFAULT NULL,
   `senha` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `perfilusuario`
+--
+
+INSERT INTO `perfilusuario` (`cpf`, `nome`, `dataNascimento`, `endereco`, `bairro`, `cidade`, `email`, `telefone`, `senha`) VALUES
+(7979, '', '0000-00-00', '', '', '', '', '', '1234'),
+(8989, 'dwa', '0000-00-00', '', '', '', '', '', '1234');
 
 -- --------------------------------------------------------
 
@@ -104,8 +125,23 @@ CREATE TABLE `vaga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Despejando dados para a tabela `vaga`
+--
+
+INSERT INTO `vaga` (`idVaga`, `nomEmpresa`, `requisitos`, `descAtividades`, `turno`, `cargo`, `endereco`, `email`) VALUES
+(2, 'senac', 'senac', 'senac', 'Comercial', 'senac', 'senac', 'senac@senac.com');
+
+--
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `curriculo`
+--
+ALTER TABLE `curriculo`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_vaga` (`idCpfCandidato`),
+  ADD KEY `idVaga` (`idVaga`);
 
 --
 -- Índices de tabela `experiencias`
@@ -136,8 +172,6 @@ ALTER TABLE `loginadmin`
 ALTER TABLE `perfilusuario`
   ADD PRIMARY KEY (`cpf`),
   ADD UNIQUE KEY `cpf` (`cpf`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `telefone` (`telefone`),
   ADD KEY `cpf_candidato` (`cpf`),
   ADD KEY `nome_candidato` (`nome`),
   ADD KEY `idx_senha` (`senha`);
@@ -176,7 +210,18 @@ ALTER TABLE `loginadmin`
 -- AUTO_INCREMENT de tabela `vaga`
 --
 ALTER TABLE `vaga`
-  MODIFY `idVaga` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idVaga` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `curriculo`
+--
+ALTER TABLE `curriculo`
+  ADD CONSTRAINT `curriculo_ibfk_1` FOREIGN KEY (`idVaga`) REFERENCES `vaga` (`idVaga`),
+  ADD CONSTRAINT `fk_candidato_cpf` FOREIGN KEY (`idCpfCandidato`) REFERENCES `perfilusuario` (`cpf`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
