@@ -65,7 +65,7 @@
     
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="Contact.html">Contacte-nos</a></li>
             <li><a href="#">Sobre nós</a></li>
             <li><a href="#">Dúvidas</a></li>
@@ -114,8 +114,11 @@
     <button onclick="chata()">Candidatar-se para vaga</button>
     <script>
         function chata(){
-            alert('Cadastre-se para se Candidatar');
-            window.location.href='./User/cadastro.php'
+        alert('Você precisa estar cadastrado para se candidatar a uma vaga');
+        var conf = confirm("Deseja ir para tela de Cadastro?");
+        if (conf == true){          
+            window.location.href="./User/cadastro.php";
+        } 
         }
     </script>
   </div>
@@ -154,10 +157,6 @@ window.onclick = function(event) {
 
     </div>
 
-    <div class="btn-group">
-        <a href="User/cadastro.php" class="btn">Cadastrar</a>
-        <a href="User/login.php" class="btn">Login</a>
-    </div>
 
   <div>
     <footer>

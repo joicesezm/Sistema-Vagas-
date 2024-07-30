@@ -8,6 +8,6 @@ $_SESSION = array();
 session_destroy();
 
 // Redireciona para a página de login
-echo "<script>alert('Desconectou com Sucesso!'); window.location='../index.html';</script>";
+echo "<script>alert('Desconectou com Sucesso!'); window.location='../index.php';</script>";
 exit;
 ?>
