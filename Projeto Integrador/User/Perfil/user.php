@@ -130,8 +130,12 @@
         <div class="content">
             <div class="flex-1">
                 <button onclick="dynamicDisplay('even', './cadastroMeuPerfil.php')"><b>Perfil do Usuário</b></button>
+                Area de Habilidades
                 <button onclick="dynamicDisplay('odd', './formacao.php')"><b>Formações</b></button>
+                <a id="aestranho" href="./consultarFormacao.php"><b>Consultar Formações</b></a>
                 <button onclick="dynamicDisplay('even', './experiencias.php')"><b>Experiência</b></button>
+                <a id="aestranho" href="./consultarExperiencia.php"><b>Consultar Experiências</b></a>
+                Area de Vagas
                 <a id="aestranho" href="./consultarVagasUser.php"><b>Consultar Vagas</b></a>
             </div>
             <div class="flex-3" id="content">
